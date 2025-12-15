@@ -17,6 +17,8 @@ links:
 ---
 I reviewed recent RFPs to group recurring asks by theme, industry, and product capability. That let me identify the true source documents and owners instead of letting every response drift.
 
+![Diagram showing RFP intake moving to question mapping, governed narratives, journey-based templates, a review cadence, and a feedback loop back to intake](/prose/images/collateral-flow.svg)
+
 With the mapping in place, I designed a library of governed narratives and evidence blocks. Each block carried ownership, last review date, and a usage note so sales and solutions teams could trust it. Templates matched the buying journey, not just a product list.
 
 > Anchor everything to the source of truth and make ownership visible; trust follows.

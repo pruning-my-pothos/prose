@@ -12,9 +12,9 @@ const practice = (await getCollection('work', isPublished)).sort(sortByDateDesc)
     <p class="muted">Examined execution with calm language, clear constraints, and accountable outcomes.</p>
   </header>
 
-  <div class="card-grid">
+  <div class="listing">
     {practice.map((item) => (
-      <a class="card" href={withBase(`/practice/${item.slug}`)}>
+      <a class="listing-item" href={withBase(`/practice/${item.slug}`)}>
         <div class="listing-meta">
           <span>{item.data.date.toLocaleDateString()}</span>
           <span class="divider"></span>
