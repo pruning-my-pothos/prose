@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/paths';
+---
+<BaseLayout title="About" description="Context, trajectory, and working principles for this site.">
+  <div class="article">
+    <header>
+      <p class="muted">About</p>
+      <h1>Shailesh</h1>
+      <p class="muted">Operator who writes and builds at the intersection of product, communications, and delivery.</p>
+    </header>
+
+    <p>
+      Pruning My Pothos is a reading-first execution journal. It separates applied practice, philosophical thinking, and
+      working notes so you can decide how deep to go. It is not a résumé or a portfolio.
+    </p>
+
+    <h2>Working style</h2>
+    <ul>
+      <li>Start with the narrative, then build the smallest useful artifact.</li>
+      <li>Pair execution with documentation so future contributors have context.</li>
+      <li>Ship in calm environments with crisp constraints and measurable outcomes.</li>
+    </ul>
+
+    <h2>What lives here</h2>
+    <p>
+      Practice holds examined execution. Philosophy explores systems, AI, work, and meaning. Working Notes capture
+      experiments and drafts that may grow into the other sections. Documentation lives in verse and covers the writing
+      and technical systems behind the site.
+    </p>
+
+    <h2>Trajectory</h2>
+    <p>
+      I started in communications, moved into product delivery, and now blend systems thinking with hands-on build work. The throughline is clarity: say the thing plainly, ship the smallest useful version, then iterate with context.
+    </p>
+
+    <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+      <a class="button" href={withBase('/practice')}>Enter Practice</a>
+      <a class="button light" href={withBase('/philosophy')}>Read Philosophy</a>
+      <a class="button light" href={withBase('/working-notes')}>Browse Working Notes</a>
+      <a class="button light" href="mailto:hello@yourdomain.com">Get in touch</a>
+    </div>
+  </div>
+</BaseLayout>

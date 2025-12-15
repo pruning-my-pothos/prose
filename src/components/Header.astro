@@ -1,0 +1,18 @@
+---
+import { withBase } from '../utils/paths';
+---
+<header class="header">
+  <div class="navbar">
+    <a class="logo" href={withBase('/')}> 
+      <span class="logo-dot"></span>
+      <span>Pruning My Pothos</span>
+    </a>
+    <nav class="nav-links">
+      <a href={withBase('/practice')}>Practice</a>
+      <a href={withBase('/philosophy')}>Philosophy</a>
+      <a href={withBase('/working-notes')}>Working Notes</a>
+      <a href={withBase('/about')}>About</a>
+      <a class="button light" href="https://verse.YOURDOMAIN.com" target="_blank" rel="noreferrer">Documentation</a>
+    </nav>
+  </div>
+</header>

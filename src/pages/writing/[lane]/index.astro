@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { isPublished, sortByDateDesc } from '../../../utils/content';
+import { withBase } from '../../../utils/paths';
+
+const laneDetails: Record<string, { title: string; description: string }> = {
+  philosophy: {
+    title: 'Philosophy',
+    description: 'Beliefs that shape how I build and communicate.',
+  },
+  creative: {
+    title: 'Creative',
+    description: 'Fiction, fragments, and style drills.',
+  },
+  comms: {
+    title: 'Corporate Communications',
+    description: 'Narratives for executives, teams, and customers.',
+  },
+};
+
+export async function getStaticPaths() {
+  const lanes = ['philosophy', 'creative', 'comms'];
+  return lanes.map((lane) => ({ params: { lane }, props: { lane } }));
+}
+
+const { lane } = Astro.props;
+const items = (await getCollection(lane as any, isPublished)).sort(sortByDateDesc);
+const meta = laneDetails[lane];
+---
+<BaseLayout title={`${meta.title} writing`} description={meta.description}>
+  <header style="max-width:720px; margin:0 0 1.5rem;">
+    <p class="muted">Writing</p>
+    <h1>{meta.title}</h1>
+    <p class="muted">{meta.description}</p>
+  </header>
+
+  <div class="listing">
+    {items.map((item) => (
+      <a class="listing-item" href={withBase(`/writing/${lane}/${item.slug}`)}>
+        <div class="listing-meta">
+          <span>{item.data.date.toLocaleDateString()}</span>
+          <span class="divider"></span>
+          <span class="badge">{item.data.lane}</span>
+        </div>
+        <h3>{item.data.title}</h3>
+        <p>{item.data.description}</p>
+        <div>
+          {item.data.tags.map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

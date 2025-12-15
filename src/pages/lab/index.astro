@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { isPublished, sortByDateDesc } from '../../utils/content';
+import { withBase } from '../../utils/paths';
+
+const lab = (await getCollection('lab', isPublished)).sort(sortByDateDesc);
+---
+<BaseLayout title="Lab" description="Experiments, prototypes, and learning notes.">
+  <header style="max-width:720px; margin:0 0 1.5rem;">
+    <h1>Working Notes</h1>
+    <p class="muted">Hands-on experiments to validate ideas, tools, and workflows. These entries are exploratory by design.</p>
+  </header>
+
+  <div class="listing">
+    {lab.map((item) => (
+      <a class="listing-item" href={withBase(`/lab/${item.slug}`)}>
+        <div class="listing-meta">
+          <span>{item.data.date.toLocaleDateString()}</span>
+          <span class="divider"></span>
+          <span>{item.data.hypothesis}</span>
+        </div>
+        <h3>{item.data.title}</h3>
+        <p>{item.data.description}</p>
+        <div class="listing-meta">
+          <span class="badge">Next: {item.data.next_iteration}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

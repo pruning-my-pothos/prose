@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { isPublished, sortByDateDesc } from '../utils/content';
+import { withBase } from '../utils/paths';
+
+const practice = (await getCollection('work', isPublished)).sort(sortByDateDesc);
+const curatedPractice = practice.filter((item) => item.data.featured).slice(0, 3);
+const practiceItems =
+  curatedPractice.length >= 2 ? curatedPractice.slice(0, 3) : practice.slice(0, 3);
+
+const philosophy = (await getCollection('philosophy', isPublished)).sort(sortByDateDesc);
+const selectedPhilosophy = (philosophy.find((item) => item.data.featured) ?? philosophy[0]) ?? null;
+
+const lab = (await getCollection('lab', isPublished)).sort(sortByDateDesc);
+const creative = (await getCollection('creative', isPublished)).sort(sortByDateDesc);
+const comms = (await getCollection('comms', isPublished)).sort(sortByDateDesc);
+const workingNotes = [...lab, ...creative, ...comms].sort(sortByDateDesc);
+const notesSnapshot = workingNotes.slice(0, 2);
+---
+<BaseLayout title="Pruning My Pothos" description="A reading-first journal of applied practice, philosophy, and working notes.">
+  <section class="hero">
+    <div>
+      <p class="highlight">Pruning My Pothos is a working surface for applied practice, philosophical thinking, and disciplined experimentation.</p>
+      <p class="muted" style="margin-top:0.8rem;">
+        It is meant to be read slowly. Practice captures examined execution. Philosophy carries the thinking behind the moves. Working Notes collect drafts and experiments that might grow into either.
+      </p>
+    </div>
+    <div class="visual-panel">
+      <div class="visual-rows">
+        <div class="visual-row">
+          <span class="visual-dot"></span>
+          <div>
+            <strong>Practice</strong>
+            <div class="visual-line"></div>
+          </div>
+        </div>
+        <div class="visual-row">
+          <span class="visual-dot" style="background: #0f4c5a;"></span>
+          <div>
+            <strong>Philosophy</strong>
+            <div class="visual-line"></div>
+          </div>
+        </div>
+        <div class="visual-row">
+          <span class="visual-dot" style="background: #3a7a5b;"></span>
+          <div>
+            <strong>Working Notes</strong>
+            <div class="visual-line"></div>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="margin:1rem 0 0;">Follow a lane based on what you want: execution detail, conceptual depth, or exploratory sparks.</p>
+    </div>
+  </section>
+
+  <section style="margin-top:2.2rem;">
+    <h2>How to read this site</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Practice</h3>
+        <p>Case-based execution. Decisions, constraints, and measured outcomes sit in plain view.</p>
+      </div>
+      <div class="card">
+        <h3>Philosophy</h3>
+        <p>Conceptual essays on systems, AI, work, and meaning. Reasoned and grounded, not advice-first.</p>
+      </div>
+      <div class="card">
+        <h3>Working Notes</h3>
+        <p>Explorations and drafts. Explicitly incomplete, but shaped enough to spark future work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-heading">
+    <h2>Featured Practice</h2>
+    <a href={withBase('/practice')}>View Practice</a>
+  </section>
+  <div class="card-grid">
+    {practiceItems.map((item) => (
+      <a class="card" href={withBase(`/practice/${item.slug}`)}>
+        <h3>{item.data.title}</h3>
+        <p>{item.data.problem}</p>
+        <p class="muted" style="margin:0;">Decision focus: {item.data.approach}</p>
+      </a>
+    ))}
+  </div>
+
+  <section class="section-heading">
+    <h2>Selected Philosophy</h2>
+    <a href={withBase('/philosophy')}>View Philosophy</a>
+  </section>
+  {selectedPhilosophy ? (
+    <div class="listing">
+      <a class="listing-item" href={withBase(`/philosophy/${selectedPhilosophy.slug}`)}>
+        <div class="listing-meta">
+          <span>{selectedPhilosophy.data.date.toLocaleDateString()}</span>
+          <span class="divider"></span>
+          <span class="badge">Philosophy</span>
+        </div>
+        <h3>{selectedPhilosophy.data.title}</h3>
+        <p>{selectedPhilosophy.data.description}</p>
+      </a>
+    </div>
+  ) : null}
+
+  <section class="section-heading">
+    <h2>Working Notes snapshot</h2>
+    <a href={withBase('/working-notes')}>View Working Notes</a>
+  </section>
+  <div class="listing">
+    {notesSnapshot.map((item) => (
+      <a class="listing-item" href={withBase(`/working-notes/${item.slug}`)}>
+        <div class="listing-meta">
+          <span>{item.data.date.toLocaleDateString()}</span>
+          <span class="divider"></span>
+          <span class="badge">Exploratory</span>
+        </div>
+        <h3>{item.data.title}</h3>
+        <p>{item.data.description}</p>
+        <p class="muted" style="margin:0;">Intent: keep thinking in motion without pretending it is finished.</p>
+      </a>
+    ))}
+  </div>
+
+  <section class="section-heading">
+    <h2>Documentation</h2>
+    <a href="https://verse.YOURDOMAIN.com" target="_blank" rel="noreferrer">Open verse</a>
+  </section>
+  <p class="muted" style="max-width:720px; margin-top:0.2rem;">Technical foundations and writing systems that support this site. Use when you want to see the scaffolding behind the words.</p>
+</BaseLayout>

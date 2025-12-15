@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { isPublished, sortByDateDesc } from '../../utils/content';
+import { withBase } from '../../utils/paths';
+
+const philosophy = (await getCollection('philosophy', isPublished)).sort(sortByDateDesc);
+const creative = (await getCollection('creative', isPublished)).sort(sortByDateDesc);
+const comms = (await getCollection('comms', isPublished)).sort(sortByDateDesc);
+
+const lanes = [
+  { key: 'philosophy', label: 'Philosophy', description: 'Beliefs, operators, and systems thinking.', items: philosophy },
+  { key: 'creative', label: 'Creative', description: 'Stories, textures, and practice runs.', items: creative },
+  { key: 'comms', label: 'Corporate Communications', description: 'Narratives and enablement for teams and stakeholders.', items: comms },
+];
+---
+<BaseLayout title="Writing" description="Essays across philosophy, creative work, and corporate communications.">
+  <header style="max-width:720px; margin:0 0 1.5rem;">
+    <h1>Writing</h1>
+    <p class="muted">Reading-first essays with a narrow column and quiet presentation.</p>
+  </header>
+
+  {lanes.map((lane) => (
+    <section style="margin-top:1.5rem;">
+      <div class="section-heading">
+        <div>
+          <p class="muted" style="margin:0 0 0.3rem;">{lane.label}</p>
+          <h2 style="margin:0;">{lane.description}</h2>
+        </div>
+        <a href={withBase(`/writing/${lane.key}`)}>View lane</a>
+      </div>
+      <div class="listing">
+        {lane.items.slice(0, 2).map((item) => (
+          <a class="listing-item" href={withBase(`/writing/${lane.key}/${item.slug}`)}>
+            <div class="listing-meta">
+              <span>{item.data.date.toLocaleDateString()}</span>
+              <span class="divider"></span>
+              <span class="badge">{item.data.lane}</span>
+            </div>
+            <h3>{item.data.title}</h3>
+            <p>{item.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  ))}
+</BaseLayout>

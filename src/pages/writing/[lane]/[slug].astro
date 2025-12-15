@@ -1,0 +1,45 @@
+---
+import ArticleLayout from '../../../layouts/ArticleLayout.astro';
+import { getCollection } from 'astro:content';
+import { readingTime } from '../../../utils/readingTime';
+import { isPublished } from '../../../utils/content';
+
+export async function getStaticPaths() {
+  const lanes = ['philosophy', 'creative', 'comms'] as const;
+  const entries = await Promise.all(
+    lanes.map(async (lane) => {
+      const items = await getCollection(lane as any, isPublished);
+      return items.map((item) => ({
+        params: { lane, slug: item.slug },
+        props: { item },
+      }));
+    })
+  );
+
+  return entries.flat();
+}
+
+const { item } = Astro.props;
+const { Content } = await item.render();
+const reading = readingTime(item.body);
+---
+<ArticleLayout title={item.data.title} description={item.data.description}>
+  <header>
+    <div class="meta-row">
+      <span class="badge">{item.data.lane}</span>
+      <span class="divider"></span>
+      <span>{item.data.date.toLocaleDateString()}</span>
+      <span class="divider"></span>
+      <span>{reading.label}</span>
+    </div>
+    <h1>{item.data.title}</h1>
+    <p class="muted">{item.data.description}</p>
+    <div style="margin-top:0.6rem;">
+      {item.data.tags.map((tag) => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+  </header>
+
+  <Content />
+</ArticleLayout>
