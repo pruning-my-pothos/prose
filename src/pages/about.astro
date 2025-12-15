@@ -2,43 +2,96 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { withBase } from '../utils/paths';
 ---
-<BaseLayout title="About" description="Context, trajectory, and working principles for this site.">
+<BaseLayout title="About" description="Operational context for how and why this site exists.">
   <div class="article">
     <header>
       <p class="muted">About</p>
       <h1>Shailesh</h1>
-      <p class="muted">Operator who writes and builds at the intersection of product, communications, and delivery.</p>
+      <p class="muted">Working across product, engineering, communications, and delivery.</p>
     </header>
 
+    <div class="visual-panel" style="margin-bottom:1.4rem;">
+      <div class="visual-rows">
+        <div class="visual-row">
+          <span class="visual-dot"></span>
+          <div>
+            <strong>Practice</strong>
+            <div class="visual-line"></div>
+          </div>
+        </div>
+        <div class="visual-row">
+          <span class="visual-dot" style="background:#0f4c5a;"></span>
+          <div>
+            <strong>Philosophy</strong>
+            <div class="visual-line"></div>
+          </div>
+        </div>
+        <div class="visual-row">
+          <span class="visual-dot" style="background:#3a7a5b;"></span>
+          <div>
+            <strong>Working Notes</strong>
+            <div class="visual-line"></div>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="margin:0.9rem 0 0;">Read through the lane that matches your intent. Practice for execution, Philosophy for thinking, Working Notes for motion.</p>
+    </div>
+
+    <h2>I’m Shailesh</h2>
     <p>
-      Pruning My Pothos is a reading-first execution journal. It separates applied practice, philosophical thinking, and
-      working notes so you can decide how deep to go. It is not a résumé or a portfolio.
+      I’m using this site to make my way of thinking and working visible, because most of the roles I’m aiming for sit in
+      the gaps between product, engineering, communications, and delivery. Those gaps are hard to explain in a résumé and easy to misunderstand in interviews.
+    </p>
+    <p>
+      This is not an attempt to build a personal brand. It’s an attempt to show how I actually operate when I’m given a problem, some constraints, and room to think.
     </p>
 
-    <h2>Working style</h2>
+    <h2>Why this site exists</h2>
+    <p>
+      I’m at a stage where I’m deliberately investing time in building clarity, not just outputs.
+    </p>
+    <p>
+      I’ve spent time in communications, moved closer to product and delivery, and now work across systems, documentation, and execution. What I’ve seen repeatedly is that teams don’t fail because they lack tools. They fail because context is fragmented, decisions are poorly articulated, and thinking is outsourced or rushed.
+    </p>
+    <p>This site is a response to that.</p>
     <ul>
-      <li>Start with the narrative, then build the smallest useful artifact.</li>
-      <li>Pair execution with documentation so future contributors have context.</li>
-      <li>Ship in calm environments with crisp constraints and measurable outcomes.</li>
+      <li>think in public without turning everything into advice</li>
+      <li>show how ideas move from rough notes to applied work</li>
+      <li>demonstrate technical writing and documentation judgment alongside execution</li>
+      <li>separate finished thinking from thinking-in-progress</li>
     </ul>
 
-    <h2>What lives here</h2>
-    <p>
-      Practice holds examined execution. Philosophy explores systems, AI, work, and meaning. Working Notes capture
-      experiments and drafts that may grow into the other sections. Documentation lives in verse and covers the writing
-      and technical systems behind the site.
-    </p>
+    <h2>How I use this space</h2>
+    <p>The structure is intentional.</p>
+    <p><strong>Practice</strong> is where I document execution that has been examined. Not just what was done, but why it was done that way, what constraints mattered, and what changed as a result.</p>
+    <p><strong>Philosophy</strong> is where I explore systems, AI, work, writing, and meaning. These pieces exist to sharpen my thinking, not to convince or persuade.</p>
+    <p><strong>Working Notes</strong> are deliberately incomplete. They are where ideas start, where experiments live, and where uncertainty is allowed. Some of these notes may later become Practice or Philosophy. Many will not.</p>
+    <p><strong>Documentation</strong> lives separately in <strong>Verse</strong>. That is where I document tools, systems, patterns, and writing structures properly, using established documentation principles. I keep it separate because mixing narrative and reference usually degrades both.</p>
 
-    <h2>Trajectory</h2>
-    <p>
-      I started in communications, moved into product delivery, and now blend systems thinking with hands-on build work. The throughline is clarity: say the thing plainly, ship the smallest useful version, then iterate with context.
-    </p>
+    <h2>How I actually work</h2>
+    <p>I tend to write before I build, not as a habit, but as a way to reduce ambiguity early.</p>
+    <ul>
+      <li>understand the narrative of a problem before committing to a solution</li>
+      <li>build the smallest useful artifact that changes something real</li>
+      <li>document decisions while they are being made, not after outcomes are known</li>
+    </ul>
+    <p>I’m not interested in speed for its own sake. I’m interested in calm, repeatable execution that other people can understand and build on.</p>
 
-    <div style="margin-top:1.5rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
+    <h2>Where this is going</h2>
+    <p>This site is not finished and is not meant to be.</p>
+    <p>
+      It’s a working surface while I continue to study, build, and look for roles where this kind of cross-functional thinking is valued rather than flattened into titles.
+    </p>
+    <p>
+      If you’re here to skim, the structure should help you decide where to look. If you’re here to read, the pacing should make that possible.
+    </p>
+    <p>That’s enough context.</p>
+
+    <div style="margin-top:1.8rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
       <a class="button" href={withBase('/practice')}>Enter Practice</a>
       <a class="button light" href={withBase('/philosophy')}>Read Philosophy</a>
       <a class="button light" href={withBase('/working-notes')}>Browse Working Notes</a>
-      <a class="button light" href="mailto:hello@yourdomain.com">Get in touch</a>
+      <a class="button light" href="https://verse.YOURDOMAIN.com" target="_blank" rel="noreferrer">Open Documentation</a>
     </div>
   </div>
 </BaseLayout>

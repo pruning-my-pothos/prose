@@ -57,18 +57,18 @@ const notesSnapshot = workingNotes.slice(0, 2);
   <section style="margin-top:2.2rem;">
     <h2>How to read this site</h2>
     <div class="card-grid">
-      <div class="card">
+      <a class="card" href={withBase('/practice')}>
         <h3>Practice</h3>
         <p>Case-based execution. Decisions, constraints, and measured outcomes sit in plain view.</p>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href={withBase('/philosophy')}>
         <h3>Philosophy</h3>
         <p>Conceptual essays on systems, AI, work, and meaning. Reasoned and grounded, not advice-first.</p>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href={withBase('/working-notes')}>
         <h3>Working Notes</h3>
         <p>Explorations and drafts. Explicitly incomplete, but shaped enough to spark future work.</p>
-      </div>
+      </a>
     </div>
   </section>
 

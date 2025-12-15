@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600&display=swap');
 
 :root {
-  --bg: #fdfbf7;
-  --text: #0f0f0e;
-  --muted: #4f4a43;
-  --accent: #0f6a7a;
-  --border: #e4ddd2;
+  --bg: #ffffff;
+  --text: #0d0d0c;
+  --muted: #4a463f;
+  --accent: #0c5a69;
+  --border: #e9e5df;
   --card: #ffffff;
   --radius: 12px;
 }
@@ -23,6 +23,7 @@ body {
   line-height: 1.78;
   letter-spacing: 0.01em;
   text-rendering: optimizeLegibility;
+  color-scheme: only light;
 }
 
 a {
@@ -167,7 +168,7 @@ main {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.2rem 1.3rem;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.035);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.03);
   transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
@@ -272,7 +273,7 @@ main {
 .visual-panel {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: linear-gradient(160deg, rgba(15, 106, 122, 0.04), rgba(255, 255, 255, 0.9));
+  background: linear-gradient(160deg, rgba(14, 98, 114, 0.04), rgba(255, 255, 255, 0.92));
   padding: 1.2rem;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
 }
@@ -383,7 +384,7 @@ main {
 }
 
 .highlight {
-  background: linear-gradient(120deg, rgba(15, 106, 122, 0.12), rgba(15, 106, 122, 0.06));
+  background: linear-gradient(120deg, rgba(12, 90, 105, 0.08), rgba(12, 90, 105, 0.04));
   padding: 0.35rem 0.6rem;
   border-radius: 10px;
   border: 1px solid var(--border);
