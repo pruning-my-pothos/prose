@@ -7,6 +7,7 @@ Personal site built with Astro content collections. Reading-first execution jour
 - Develop: `npm run dev` then open http://localhost:4321/prose/
 - Build: `npm run build`
 - Preview production build: `npm run preview`
+- Shortcuts: `make dev`, `make build`, `make preview`, `make push` (add/commit/push), `make publish` (build + push)
 
 ## Content model
 Content lives in `src/content/` as Markdown. All entries share:
@@ -76,6 +77,18 @@ Essay content here.
 - Legacy: `/lab`, `/work`, `/writing/*` still resolve but the primary navigation uses the above.
 - `/about`
 - `/rss.xml` (philosophy + working notes feed)
+
+## How to add content quickly
+- Practice: add a file under `src/content/work/` with the Practice schema. Include a clear problem, decision/approach, and outcome. Set `featured: true` to surface on the homepage.
+- Philosophy: add under `src/content/philosophy/` with `lane: philosophy`. Keep paragraphs short; the reading layout enforces a narrow column.
+- Working Notes: add under `src/content/lab/` for experiments or under `src/content/creative/` and `src/content/comms/` for other lanes. These aggregate at `/working-notes`.
+- Use the links field in Practice to point at verse or other artifacts; base path aware links should use absolute URLs.
+
+## Deployment and GitHub Pages
+- `make push` will add/commit/push to `main`.
+- GitHub Actions workflow at `.github/workflows/deploy.yml` builds on pushes to `main` and deploys via Pages.
+- Ensure `astro.config.mjs` `site` is set to `https://pruning-my-pothos.github.io/prose/` (default) or your chosen domain, with `base: '/prose'`.
+- Published site: `https://pruning-my-pothos.github.io/prose/` and RSS at `/prose/rss.xml`.
 
 ## Base path and SEO
 - Site title: **Pruning My Pothos**
