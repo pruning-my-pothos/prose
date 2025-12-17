@@ -12,6 +12,7 @@ import VersionWarning from "../components/layouts/VersionWarning.astro";
 import VersionDropdown from "../components/layouts/VersionDropdown.astro";
 import { getCanonicalUrlFromEntry, getCanonicalDates } from "../utils/versionUtils";
 import { getCollection } from "astro:content";
+const base = import.meta.env.BASE_URL;
 
 // You'll need to find Astro alternatives for these React components:
 // - BackToTop
@@ -90,7 +91,7 @@ const coverImage =
 	<header class="header-section">
 		<div class="above-title">
 			<div class="back-link">
-				<a href={`/${frontmatter.type}s`}>
+				<a href={`${base}${frontmatter.type}s`}>
 					<Icon name="heroicons:arrow-left" size={16} />
 					<span>
 						{frontmatter.type.charAt(0).toUpperCase() + frontmatter.type.slice(1)}s

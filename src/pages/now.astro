@@ -64,15 +64,14 @@ const components = {
 		<main>
 			{
 				renderedPosts.map(({ Content, post }) => (
-					<NowSection>
-						<h3>
-							<a href={`/now-${post.id}`} class="post-title-link">
-							<a href={`${base}now-${post.id}`} class="post-title-link">
-								{post.data.title}
-							</a>
-						</h3>
-						<Content components={components} />
-					</NowSection>
+						<NowSection>
+							<h3>
+								<a href={`${base}now-${post.id}`} class="post-title-link">
+									{post.data.title}
+								</a>
+							</h3>
+							<Content components={components} />
+						</NowSection>
 				))
 			}
 		</main>

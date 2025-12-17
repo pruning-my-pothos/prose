@@ -3,9 +3,10 @@ const { title, slug, date, id, cover, conferences } = Astro.props;
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import RelativeDate from "../layouts/RelativeDate.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
-<a href={`/${slug}`}>
+<a href={`${base}${slug}`}>
 	<div class="talk-card">
 		{
 			cover && (

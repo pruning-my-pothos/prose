@@ -2,9 +2,10 @@
 const { slug, date, title, id, description } = Astro.props;
 import RelativeDate from "../layouts/RelativeDate.astro";
 import PatternIcon from "../icons/PatternIcon.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
-<a href={`/${slug}`}>
+<a href={`${base}${slug}`}>
 	<div class="pattern-card">
 		<PatternIcon size={28} class="pattern-card-icon" />
 		<div>

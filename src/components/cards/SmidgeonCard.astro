@@ -3,9 +3,10 @@ import { Icon } from "astro-icon/components";
 import RelativeDate from "../layouts/RelativeDate.astro";
 
 const { slug, title, date, preview } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
-<a href={`/${slug}`}>
+<a href={`${base}${slug}`}>
 	<div class="smidgeon-card">
 		<Icon name="heroicons:paper-clip" size={24} class="content-icon" />
 		<div>

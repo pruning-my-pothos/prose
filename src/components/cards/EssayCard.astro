@@ -3,9 +3,10 @@ const { slug, cover, title, growthStage, date, description, id } = Astro.props;
 import { Image } from "astro:assets";
 import RelativeDate from "../layouts/RelativeDate.astro";
 import GrowthIcon from "../layouts/GrowthIcon.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
-<a href={`/${slug}`}>
+<a href={`${base}${slug}`}>
 	<div class="essay-card">
 		{
 			cover && (
