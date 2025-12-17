@@ -3,11 +3,10 @@ import MainNavLinks from "./MainNavLinks.astro";
 import Logo from "../../animated-icons/Logo.astro";
 import MobileMenu from "./MobileMenu.astro";
 import { Icon } from "astro-icon/components";
-const base = import.meta.env.BASE_URL;
 ---
 
 <nav class="navbar" transition:persist>
-	<a href={base} aria-label="home">
+	<a href="/" aria-label="home">
 		<span class="visually-hidden">Home</span>
 		<Logo />
 	</a>
