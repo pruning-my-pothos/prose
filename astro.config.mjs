@@ -6,11 +6,14 @@ import icon from "astro-icon";
 import partytown from "@astrojs/partytown";
 import { remarkWikiLink } from "./src/plugins/remark-wiki-link";
 
+const site = process.env.SITE_URL || "https://pruningmypothos.com";
+const base = process.env.BASE_PATH || "/";
 const useNoImageOptim = process.env.NO_IMAGE_OPTIM !== "false";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://pruningmypothos.com",
+  site,
+  base,
   image: {
     service: useNoImageOptim
       ? { entrypoint: "astro/assets/services/noop" }
