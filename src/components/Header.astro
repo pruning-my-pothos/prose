@@ -22,13 +22,15 @@ import { withBase } from '../utils/paths';
 </header>
 
 <script>
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('primary-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      nav.classList.toggle('open', !isOpen);
-    });
-  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        nav.classList.toggle('open', !isOpen);
+      });
+    }
+  });
 </script>
