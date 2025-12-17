@@ -70,6 +70,9 @@ export async function getStaticPaths() {
 }
 
 async function getImageData(imagePath: string) {
+  const base = (import.meta as any).env?.BASE_URL || "/";
+  const baseNormalized = base.endsWith("/") ? base.slice(0, -1) : base;
+
   try {
     // If it's an @fs path in development, extract the real path
     if (imagePath.startsWith("/@fs")) {
@@ -78,6 +81,9 @@ async function getImageData(imagePath: string) {
         // Convert to public path
         imagePath = `/images/${match[1]}`;
       }
+    } else if (imagePath.startsWith(`${baseNormalized}/_astro/`)) {
+      // Remove base for GitHub Pages style paths, then point to dist
+      imagePath = `./dist${imagePath.replace(baseNormalized, "")}`;
     } else if (imagePath.startsWith("/_astro/")) {
       // In production, images are in the dist directory
       imagePath = `./dist${imagePath}`;

@@ -1,9 +1,15 @@
 ---
 const { href } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const normalizedHref =
+	typeof href === "string" && href.startsWith("/")
+		? `${base}${href.replace(/^\//, "")}`
+		: href;
 ---
 
 <span class="link-container">
-	<a {href} class="styled-link">
+	<a href={normalizedHref} class="styled-link">
 		<span><slot /></span>
 	</a>
 </span>

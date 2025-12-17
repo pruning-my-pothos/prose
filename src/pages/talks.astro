@@ -30,13 +30,13 @@ const sortedTalks = talks.sort(
 <Layout title={`Talks | ${siteConfig.title}`}>
 	<PageWrapper>
 		<header style="margin-bottom: var(--space-xl);">
-			<TitleWithCount posts={sortedTalks}>
-				<div class="back-link" slot="header-right">
-					<a href={`${base}garden`}>
-						<Icon name="heroicons:arrow-left" size={16} />
-						<span> Back to Path </span>
-					</a>
-				</div>
+				<TitleWithCount posts={sortedTalks}>
+					<div class="back-link" slot="header-right">
+						<a href={`${base}garden`}>
+							<Icon name="heroicons:arrow-left" size={16} />
+							<span> Back to Path </span>
+						</a>
+					</div>
 				Talks
 			</TitleWithCount>
 			<Title2
