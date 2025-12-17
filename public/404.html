@@ -20,7 +20,8 @@
           var fixed = base + (path.startsWith("/") ? path : "/" + path);
           window.location.replace(fixed + search + hash);
         } else {
-          window.location.replace(base + "/" + search + hash);
+          // Already under /prose - keep the path intact
+          window.location.replace(path + search + hash);
         }
       })();
     </script>
