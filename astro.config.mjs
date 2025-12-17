@@ -8,8 +8,9 @@ import { remarkWikiLink } from "./src/plugins/remark-wiki-link";
 
 // Project lives at https://pruning-my-pothos.github.io/prose/
 // Keep explicit defaults for GitHub Pages to avoid base mismatches.
-const base = process.env.BASE_PATH || "/prose";
-const site = process.env.SITE_URL || "https://pruning-my-pothos.github.io/prose";
+// Use trailing slashes to match Astro/Vite expectations.
+const base = process.env.BASE_PATH || "/prose/";
+const site = process.env.SITE_URL || "https://pruning-my-pothos.github.io/prose/";
 
 const useNoImageOptim = process.env.NO_IMAGE_OPTIM !== "false";
 
