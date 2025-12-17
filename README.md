@@ -16,6 +16,7 @@ make build     # full build (includes OG + image optimization; can take time)
 make preview   # preview production build
 make deploy    # git push + build + vercel --prod (see deploy.sh)
 make push      # add, commit (MSG=...), push current branch
+make pages     # add, commit, push main to trigger GitHub Pages workflow
 ```
 
 ### Faster local builds / avoiding remote image failures
@@ -23,7 +24,10 @@ Image optimization is disabled by default (`NO_IMAGE_OPTIM` env var) to avoid re
 
 ## Deployment Options
 - **Vercel**: `./deploy.sh` pushes to GitHub, builds, then runs `vercel --prod`. Works on the free tier if within limits.
-- **Static hosts** (GitHub Pages, Netlify, Cloudflare Pages, Hostinger, S3+CloudFront): run `make build` and deploy the `dist/` folder.
+- **GitHub Pages (automated)**: push to `main` (use `make pages`). Workflow at `.github/workflows/gh-pages.yml` builds and publishes `dist/`.
+  - The workflow sets `SITE_URL=https://<user>.github.io/<repo>` and `BASE_PATH=/repo` by default so assets load correctly on Pages.
+  - If your repo is `<user>.github.io` or you use a custom domain, override with repo/org variables or edit the workflow: set `BASE_PATH=/` and `SITE_URL` to your root/custom domain; add `public/CNAME` for a custom domain.
+- **Other static hosts** (Netlify, Cloudflare Pages, Hostinger, S3+CloudFront): run `make build` and deploy the `dist/` folder.
   - For Vercel CLI deploys, set `VERCEL_TOKEN` env var (or run `npx vercel login` once and export the token) so deploys are non-interactive.
 
 ## Content & Branding
