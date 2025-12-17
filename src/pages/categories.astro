@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { isPublished, sortByDateDesc } from '../utils/content';
+import { withBase } from '../utils/paths';
+
+const collections = await Promise.all([
+  getCollection('philosophy', isPublished),
+  getCollection('lab', isPublished),
+  getCollection('creative', isPublished),
+  getCollection('comms', isPublished),
+  getCollection('work', isPublished),
+]);
+
+const allPosts = collections.flat().sort(sortByDateDesc);
+
+const bucketConfigs = [
+  {
+    id: 'communication',
+    title: 'Communication',
+    description: 'Internal comms · Documentation · Language and power · Meaning vs clarity',
+    tags: ['communication', 'communications', 'writing', 'documentation', 'clarity', 'language'],
+  },
+  {
+    id: 'cognition',
+    title: 'Cognition',
+    description: 'Thinking under automation · Cognitive offloading · Attention · Judgment · Skill drift',
+    tags: ['automation', 'cognitive', 'attention', 'judgment', 'thinking', 'skill'],
+  },
+  {
+    id: 'exploration',
+    title: 'Exploration',
+    description: 'Open-ended inquiry · Practice-led reflection · What is still forming',
+    tags: ['exploration', 'practice', 'experiment', 'note', 'working', 'draft'],
+  },
+  {
+    id: 'philosophy',
+    title: 'Philosophy',
+    description: 'First principles · Ethics without hype · Tools, work, and meaning',
+    tags: ['philosophy', 'ethics', 'systems', 'meaning', 'principles'],
+  },
+];
+
+const buckets = bucketConfigs.map((bucket) => {
+  const matches = allPosts.filter((post) => {
+    const tags = (post.data.tags ?? []).map((t) => t.toLowerCase());
+    return tags.some((tag) => bucket.tags.includes(tag));
+  }).slice(0, 4);
+  return { ...bucket, matches };
+});
+---
+<BaseLayout title="Categories" description="Buckets for the work: communication, cognition, exploration, and philosophy.">
+  <div class="article">
+    <h1>Categories</h1>
+    <p class="muted">Four buckets to keep the reading surface organized. Each links to recent pieces that match.</p>
+  </div>
+
+  <div class="bucket-grid">
+    {buckets.map((bucket) => (
+      <section id={bucket.id} class="bucket-card solid">
+        <h2 style="margin:0 0 0.35rem;">{bucket.title}</h2>
+        <p class="muted" style="margin:0 0 0.8rem;">{bucket.description}</p>
+        {bucket.matches.length ? (
+          <div class="listing" style="margin-top:0;">
+            {bucket.matches.map((item) => (
+              <a class="listing-item" href={withBase(`/${item.collection}/${item.slug}`)}>
+                <div class="listing-meta">
+                  <span>{item.data.date.toLocaleDateString()}</span>
+                  <span class="divider"></span>
+                  <span class="badge">{
+                    item.collection === 'philosophy'
+                      ? 'Philosophy'
+                      : item.collection === 'work'
+                        ? 'Practice'
+                        : 'Working Note'
+                  }</span>
+                </div>
+                <h3>{item.data.title}</h3>
+                <p>{item.data.description}</p>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="muted" style="margin:0;">No posts tagged here yet.</p>
+        )}
+      </section>
+    ))}
+  </div>
+</BaseLayout>
