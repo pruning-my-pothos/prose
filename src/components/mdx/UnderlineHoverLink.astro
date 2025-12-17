@@ -2,10 +2,18 @@
 const { href } = Astro.props;
 const base = import.meta.env.BASE_URL;
 
-const normalizedHref =
-	typeof href === "string" && href.startsWith("/")
-		? `${base}${href.replace(/^\//, "")}`
-		: href;
+const normalizedHref = (() => {
+	if (typeof href !== "string") return href;
+	const baseNormalized = base.endsWith("/") ? base : `${base}/`;
+
+	// If href already includes the base, leave it as-is
+	if (href.startsWith(baseNormalized)) return href;
+
+	// If href is root-relative, prepend the base once
+	if (href.startsWith("/")) return `${base}${href.replace(/^\//, "")}`;
+
+	return href;
+})();
 ---
 
 <span class="link-container">
