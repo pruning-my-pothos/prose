@@ -50,6 +50,8 @@ links:
       <th>Purpose</th>
       <th>Evidence to attach</th>
       <th>Owner</th>
+      <th>Review cadence</th>
+      <th>Status</th>
     </tr>
   </thead>
   <tbody>
@@ -58,24 +60,32 @@ links:
       <td>Ground the ask in customer context and constraints.</td>
       <td>Industry datapoint + customer quote.</td>
       <td>Solutions</td>
+      <td><span class="table-chip success">Quarterly</span></td>
+      <td><span class="table-chip neutral">Fresh</span></td>
     </tr>
     <tr>
       <td><strong>Differentiation</strong></td>
       <td>Contrast with status quo and competitors.</td>
       <td>2–3 bullets + visual that shows the delta.</td>
       <td>Product Marketing</td>
+      <td><span class="table-chip success">Quarterly</span></td>
+      <td><span class="table-chip warning">Review scheduled</span></td>
     </tr>
     <tr>
       <td><strong>Proof</strong></td>
       <td>Make the claims credible.</td>
       <td>Case study + metric + reference contact.</td>
       <td>Customer Success</td>
+      <td><span class="table-chip success">Monthly</span></td>
+      <td><span class="table-chip neutral">Fresh</span></td>
     </tr>
     <tr>
       <td><strong>Delivery & risk</strong></td>
       <td>Show feasibility, controls, and who is accountable.</td>
       <td>Implementation plan + security FAQ + DPA summary.</td>
       <td>Delivery / Security</td>
+      <td><span class="table-chip alert">Monthly</span></td>
+      <td><span class="table-chip alert">Locked</span></td>
     </tr>
   </tbody>
 </table>
