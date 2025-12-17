@@ -1,4 +1,4 @@
-# Maggie Appleton's Digital Garden
+# Shailesh Rawat's Digital Garden
 
 A personal website and digital garden built with Astro, featuring growing notes, essays, and design patterns.
 
