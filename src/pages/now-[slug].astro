@@ -14,6 +14,9 @@ import ResourceBook from "../components/mdx/ResourceBook.astro";
 import Spacer from "../components/mdx/Spacer.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "../utils/siteConfig";
+import { render } from "astro:content";
+
+const base = import.meta.env.BASE_URL;
 
 export async function getStaticPaths() {
 	const nowEntries = await getCollection("now", ({ data }) => {
@@ -27,7 +30,6 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-import { render } from "astro:content";
 const { Content } = await render(entry);
 
 const components = {
@@ -49,7 +51,7 @@ const components = {
 	<header class="header-section">
 		<div class="above-title">
 			<div class="back-link">
-				<a href="/now">
+				<a href={`${base}now`}>
 					<Icon name="heroicons:arrow-left" size={16} />
 					<span>Back to Now updates</span>
 				</a>

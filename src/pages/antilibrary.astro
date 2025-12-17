@@ -6,6 +6,7 @@ import BookCard from "../components/cards/BookCard.astro";
 import TitleWithCount from "../components/layouts/TitleWithCount.astro";
 import { getCollection } from "astro:content";
 import { siteConfig } from "../utils/siteConfig";
+const base = import.meta.env.BASE_URL;
 
 const antiBookData = await getCollection("antibooks");
 ---
@@ -14,7 +15,7 @@ const antiBookData = await getCollection("antibooks");
 	<PageWrapper>
 		<header style="margin-bottom: var(--space-2xl);">
 			<TitleWithCount posts={antiBookData}>
-				<a href="/library" class="styled-link">Library</a>
+				<a href={`${base}library`} class="styled-link">Library</a>
 				<div style="color: var(--color-gray-300); display: inline-block">|</div>
 				Antilibrary
 			</TitleWithCount>

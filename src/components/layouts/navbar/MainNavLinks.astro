@@ -2,11 +2,13 @@
 import { Icon } from "astro-icon/components";
 import UnderlineHoverLink from "../../mdx/UnderlineHoverLink.astro";
 import PatternIcon from "../../icons/PatternIcon.astro";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <div class="main" role="navigation" aria-label="Main">
 	<div class="popover">
-		<a href="/garden" class="hover-link">
+		<a href={`${base}garden`} class="hover-link">
 			<span>The Path</span>
 		</a>
 		<button
@@ -20,7 +22,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 
 		<div class="megamenu" id="garden-dropdown" role="list">
 			<div class="megamenu-grid">
-				<a href="/essays" role="listitem" class="megamenu-item">
+				<a href={`${base}essays`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<Icon name="evergreen" size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -31,7 +33,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 						</div>
 					</div>
 				</a>
-				<a href="/notes" role="listitem" class="megamenu-item">
+				<a href={`${base}notes`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<Icon name="seedling" size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -42,7 +44,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 						</div>
 					</div>
 				</a>
-				<a href="/patterns" role="listitem" class="megamenu-item">
+				<a href={`${base}patterns`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<PatternIcon size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -53,7 +55,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 						</div>
 					</div>
 				</a>
-				<a href="/smidgeons" role="listitem" class="megamenu-item">
+				<a href={`${base}smidgeons`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<Icon name="heroicons:paper-clip" size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -62,7 +64,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 						</div>
 					</div>
 				</a>
-				<a href="/talks" role="listitem" class="megamenu-item">
+				<a href={`${base}talks`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<Icon name="heroicons:presentation-chart-line" size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -71,7 +73,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 						</div>
 					</div>
 				</a>
-				<a href="/podcasts" role="listitem" class="megamenu-item">
+				<a href={`${base}podcasts`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<Icon name="heroicons:microphone" size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -80,7 +82,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 						</div>
 					</div>
 				</a>
-				<a href="/library" role="listitem" class="megamenu-item">
+				<a href={`${base}library`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<Icon name="heroicons:book-open" size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -89,7 +91,7 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 						</div>
 					</div>
 				</a>
-				<a href="/antilibrary" role="listitem" class="megamenu-item">
+				<a href={`${base}antilibrary`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
 						<Icon name="heroicons:cube-transparent" size={20} class="megamenu-icon" />
 						<div class="megamenu-text">
@@ -103,8 +105,8 @@ import PatternIcon from "../../icons/PatternIcon.astro";
 	</div>
 
 	<div class="outside-dropdown">
-		<UnderlineHoverLink href="/now">Now</UnderlineHoverLink>
-		<UnderlineHoverLink href="/about">About</UnderlineHoverLink>
+		<UnderlineHoverLink href={`${base}now`}>Now</UnderlineHoverLink>
+		<UnderlineHoverLink href={`${base}about`}>About</UnderlineHoverLink>
 	</div>
 </div>
 

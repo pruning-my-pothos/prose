@@ -8,6 +8,7 @@ import PageWrapper from "../components/layouts/PageWrapper.astro";
 import MasonryGrid from "../components/layouts/MasonryGrid.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "../utils/siteConfig";
+const base = import.meta.env.BASE_URL;
 
 // Get all podcasts
 const podcasts = await getCollection("podcasts");
@@ -23,7 +24,7 @@ const sortedPodcasts = podcasts.sort(
 		<header style="margin-bottom: var(--space-xl);">
 			<TitleWithCount posts={sortedPodcasts}>
 				<div class="back-link" slot="header-right">
-					<a href="/garden">
+					<a href={`${base}garden`}>
 						<Icon name="heroicons:arrow-left" size={16} />
 						<span> Back to Path </span>
 					</a>

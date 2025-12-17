@@ -5,6 +5,7 @@ import { SEO } from "astro-seo";
 import { ClientRouter } from "astro:transitions";
 import "../global.css";
 import { siteConfig } from "../utils/siteConfig";
+const base = import.meta.env.BASE_URL;
 
 export interface Props {
 	title?: string;
@@ -55,15 +56,19 @@ declare global {
 		{siteConfig.googleSiteVerification && (
 			<meta name="google-site-verification" content={siteConfig.googleSiteVerification} />
 		)}
-		<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
-		<link rel="manifest" href="/manifest.json" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href={`${base}images/favicon/apple-touch-icon.png`}
+		/>
+		<link rel="icon" type="image/png" sizes="32x32" href={`${base}images/favicon/favicon-32x32.png`} />
+		<link rel="icon" type="image/png" sizes="16x16" href={`${base}images/favicon/favicon-16x16.png`} />
+		<link rel="manifest" href={`${base}manifest.json`} />
 		<link
 			rel="alternate"
 			type="application/rss+xml"
 			title={`${siteConfig.title} RSS`}
-			href="/rss.xml"
+			href={`${base}rss.xml`}
 		/>
 		{siteConfig.relMe && <link rel="me" href={siteConfig.relMe} />}
 		<link rel="canonical" href={canonicalURL} />

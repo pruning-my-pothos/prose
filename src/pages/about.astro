@@ -8,6 +8,7 @@ import PageWrapper from "../components/layouts/PageWrapper.astro";
 import ProseWrapper from "../components/layouts/ProseWrapper.astro";
 import UnderlineHoverLink from "../components/mdx/UnderlineHoverLink.astro";
 import { siteConfig } from "../utils/siteConfig";
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title={`About | ${siteConfig.title}`} desc={siteConfig.description}>
@@ -91,8 +92,8 @@ import { siteConfig } from "../utils/siteConfig";
 					<li>Echoes & Ethos: reflections on marketing, creativity, burnout, identity.</li>
 					<li>Terms & Conditions: the fine print of being human at work.</li>
 					<li>
-						Start in the <a href="/garden">garden</a> to filter by topic, or jump to the{" "}
-						<a href="/now">Now</a> page for what’s in motion.
+						Start in the <a href={`${base}garden`}>garden</a> to filter by topic, or jump to the{" "}
+						<a href={`${base}now`}>Now</a> page for what’s in motion.
 					</li>
 				</ul>
 			</div>

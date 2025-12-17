@@ -13,6 +13,7 @@ import GrowthIcon from "../components/layouts/GrowthIcon.astro";
 import PageWrapper from "../components/layouts/PageWrapper.astro";
 import { extractBaseSlug } from "../utils/versionUtils";
 import { siteConfig } from "../utils/siteConfig";
+const base = import.meta.env.BASE_URL;
 
 const essays = await getCollection("essays", ({ data }) => data.featured === true && !data.draft);
 const notes = await getCollection("notes", ({ data }) => !data.draft);
@@ -82,13 +83,13 @@ const sortedPatterns = patterns
 		</section>
 
 		<section>
-			<a href="/garden">
+			<a href={`${base}garden`}>
 				<h2 class="garden-title">The Path</h2>
 			</a>
 			<div class="subheader">
 				This path is a living set of notes, essays, and patterns that sprawl and get pruned over time.{" "}
 				It orbits AI integration, techno-functional translation, and the quieter practice of growth.{" "}
-				<a href="/garden-history" class="readmore-link">
+				<a href={`${base}garden-history`} class="readmore-link">
 					Learn more
 					<Icon name="heroicons:arrow-right" size={18} />
 				</a>
@@ -97,7 +98,7 @@ const sortedPatterns = patterns
 
 		<section class="garden-section">
 			<section class="essays-section">
-				<a href="/essays" class="header-link">
+				<a href={`${base}essays`} class="header-link">
 					<h3 class="section-header">
 						Essays
 						<Icon name="heroicons:arrow-right" size={18} />
@@ -122,7 +123,7 @@ const sortedPatterns = patterns
 			</section>
 
 			<section style="grid-area: notes;">
-				<a href="/notes" class="header-link">
+				<a href={`${base}notes`} class="header-link">
 					<h3 class="section-header">
 						Notes
 						<Icon name="heroicons:arrow-right" size={18} />
@@ -133,7 +134,7 @@ const sortedPatterns = patterns
 				</div>
 				{
 					sortedNotes.slice(0, 12).map((note) => (
-						<a href={`/${note.id}`}>
+						<a href={`${base}${note.id}`}>
 							<div class="index-note-card">
 								{note.data.growthStage && (
 									<div class="icon">
@@ -150,7 +151,7 @@ const sortedPatterns = patterns
 			</section>
 
 			<section class="patterns-section">
-				<a href="/patterns" class="header-link">
+				<a href={`${base}patterns`} class="header-link">
 					<h3 class="section-header">
 						Patterns
 						<Icon name="heroicons:arrow-right" size={18} />
@@ -173,7 +174,7 @@ const sortedPatterns = patterns
 			</section>
 
 			<section class="library-section">
-				<a href="/library" class="header-link">
+				<a href={`${base}library`} class="header-link">
 					<h3 class="section-header">
 						Library
 						<Icon name="heroicons:arrow-right" size={18} />

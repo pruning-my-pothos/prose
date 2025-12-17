@@ -6,6 +6,7 @@ import BookCard from "../components/cards/BookCard.astro";
 import TitleWithCount from "../components/layouts/TitleWithCount.astro";
 import { getCollection } from "astro:content";
 import { siteConfig } from "../utils/siteConfig";
+const base = import.meta.env.BASE_URL;
 
 const books = await getCollection("books");
 ---
@@ -16,7 +17,7 @@ const books = await getCollection("books");
 			<TitleWithCount posts={books}>
 				Library
 				<div style="color: var(--color-gray-300); display: inline-block">|</div>
-				<a href="/antilibrary" class="styled-link">Antilibrary</a>
+				<a href={`${base}antilibrary`} class="styled-link">Antilibrary</a>
 			</TitleWithCount>
 			<Title2
 				>Books I've read that significantly influenced how I see the world.</Title2

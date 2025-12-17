@@ -9,6 +9,7 @@ import PageWrapper from "../components/layouts/PageWrapper.astro";
 import { Icon } from "astro-icon/components";
 import { extractBaseSlug } from "../utils/versionUtils";
 import { siteConfig } from "../utils/siteConfig";
+const base = import.meta.env.BASE_URL;
 
 // Get all essays that aren't drafts
 const essays = await getCollection("essays", ({ data }) => !data.draft);
@@ -25,7 +26,7 @@ const sortedEssays = essays.sort(
 		<header style="margin-bottom: var(--space-xl);">
 			<TitleWithCount posts={sortedEssays}>
 				<div class="back-link" slot="header-right">
-					<a href="/garden">
+					<a href={`${base}garden`}>
 						<Icon name="heroicons:arrow-left" size={16} />
 						<span> Back to Path </span>
 					</a>

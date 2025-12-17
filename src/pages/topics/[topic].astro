@@ -17,6 +17,7 @@ import { siteConfig } from "../../utils/siteConfig";
 import type { CollectionEntry } from "astro:content";
 import { Icon } from "astro-icon/components";
 import { extractBaseSlug } from "../../utils/versionUtils";
+const base = import.meta.env.BASE_URL;
 
 type Post =
 	| CollectionEntry<"essays">
@@ -54,7 +55,7 @@ const sortedPosts = posts.sort((a, b) => {
 		<header style="margin-bottom: var(--space-xl);">
 			<TitleWithCount posts={posts}>
 				<div class="back-link" slot="header-right">
-					<a href="/garden">
+					<a href={`${base}garden`}>
 						<Icon name="heroicons:arrow-left" size={16} />
 						<span> Back to Path </span>
 					</a>

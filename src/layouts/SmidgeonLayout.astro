@@ -4,6 +4,7 @@ import Layout from "./Layout.astro";
 import { Icon } from "astro-icon/components";
 import Topics from "../components/layouts/Topics.astro";
 import GrowthIcon from "../components/layouts/GrowthIcon.astro";
+const base = import.meta.env.BASE_URL;
 
 type Props = {
 	frontmatter: CollectionEntry<"smidgeons">["data"];
@@ -16,7 +17,7 @@ const { frontmatter } = Astro.props;
 	<header class="header-section">
 		<div class="above-title">
 			<div class="back-link">
-				<a href="/smidgeons">
+				<a href={`${base}smidgeons`}>
 					<Icon name="heroicons:arrow-left" size={16} />
 					<span>Smidgeons</span>
 				</a>
