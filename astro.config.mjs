@@ -1,13 +1,31 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import icon from "astro-icon";
+import partytown from "@astrojs/partytown";
+import { remarkWikiLink } from "./src/plugins/remark-wiki-link";
 
-const isDev = process.env.NODE_ENV === 'development';
-const site = isDev ? 'http://localhost:4321' : 'https://pruning-my-pothos.github.io/prose/';
-const base = isDev ? '/' : '/prose';
-
+// https://astro.build/config
 export default defineConfig({
-  site,
-  base,
-  integrations: [sitemap()],
+  site: "https://maggieappleton.com",
+  image: {
+    domains: ["res.cloudinary.com"],
+  },
+  integrations: [
+    mdx({
+      remarkPlugins: [remarkWikiLink],
+      shikiConfig: {
+        theme: "night-owl",
+        wrap: true,
+      },
+    }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+    react(),
+    icon(),
+  ],
 });

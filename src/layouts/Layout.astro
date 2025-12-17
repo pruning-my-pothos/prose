@@ -1,0 +1,133 @@
+---
+import Footer from "../components/layouts/Footer.astro";
+import Navbar from "../components/layouts/navbar/Navbar.astro";
+import { SEO } from "astro-seo";
+import { ClientRouter } from "astro:transitions";
+import "../global.css";
+import { siteConfig } from "../utils/siteConfig";
+
+export interface Props {
+	title?: string;
+	desc?: string;
+	type?: string;
+	coverImage?: string;
+	canonicalURL?: string;
+}
+
+const { title, desc, type, coverImage, canonicalURL: overrideCanonicalURL } = Astro.props;
+const pageTitle = title || siteConfig.title;
+const pageDescription = desc || siteConfig.description;
+const twitterHandle = siteConfig.twitterHandle || undefined;
+
+const canonicalURL = overrideCanonicalURL || new URL(Astro.url.pathname, Astro.site).toString();
+
+// Generate OG image URL based on canonical path so all versions share the same image
+const canonicalPathname = new URL(canonicalURL).pathname;
+const contentId = canonicalPathname.replace(/^\/?|\/?$/g, "");
+
+// Use localhost URL in development, production URL otherwise
+const baseUrl = import.meta.env.DEV ? "http://localhost:4321" : Astro.site;
+
+// Construct OG image URL - now just using the content ID directly
+const ogImageURL = type ? new URL(`/og/${contentId}.png`, baseUrl) : new URL(`/og.png`, baseUrl);
+
+// Only add search params for non-content pages (like the homepage)
+if (!type) {
+	if (pageTitle) ogImageURL.searchParams.set("title", pageTitle);
+	if (pageDescription) ogImageURL.searchParams.set("description", pageDescription);
+	if (coverImage) ogImageURL.searchParams.set("coverImage", coverImage);
+}
+
+// Google Analytics type declarations
+declare global {
+	interface Window {
+		dataLayer: any[];
+		gtag: (...args: any[]) => void;
+	}
+}
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		{siteConfig.googleSiteVerification && (
+			<meta name="google-site-verification" content={siteConfig.googleSiteVerification} />
+		)}
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png" />
+		<link rel="manifest" href="/manifest.json" />
+		<link
+			rel="alternate"
+			type="application/rss+xml"
+			title={`${siteConfig.title} RSS`}
+			href="/rss.xml"
+		/>
+		{siteConfig.webmention && <link rel="webmention" href={siteConfig.webmention} />}
+		{siteConfig.pingback && <link rel="pingback" href={siteConfig.pingback} />}
+		{siteConfig.relMe && <link rel="me" href={siteConfig.relMe} />}
+		<link rel="canonical" href={canonicalURL} />
+		<ClientRouter />
+		{
+			siteConfig.gaId && (
+				<>
+					<script
+						type="text/partytown"
+						async
+						src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.gaId}`}></script>
+					<script type="text/partytown">
+						{`window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+gtag("js", new Date());
+gtag("config", "${siteConfig.gaId}");`}
+					</script>
+				</>
+			)
+		}
+		<SEO
+			title={pageTitle}
+			description={pageDescription}
+			canonical={canonicalURL}
+			openGraph={{
+				basic: {
+					type: "website",
+					url: canonicalURL,
+					title: pageTitle,
+					image: ogImageURL.toString(),
+				},
+				optional: {
+					locale: "en_GB",
+					description: pageDescription,
+				},
+				image: {
+					alt: pageTitle,
+					width: 1200,
+					height: 630,
+				},
+			}}
+			twitter={{
+				card: "summary_large_image",
+				image: ogImageURL.toString(),
+				imageAlt: pageTitle,
+				...(twitterHandle ? { creator: twitterHandle } : {}),
+			}}
+		/>
+	</head>
+	<body>
+		<Navbar />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+		<style is:global>
+			/* Improve Page speed */
+			/* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+			img {
+				content-visibility: auto;
+			}
+		</style>
+		<script async src="https://platform.twitter.com/widgets.js"></script>
+	</body>
+</html>

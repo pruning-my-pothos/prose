@@ -1,97 +1,243 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { withBase } from '../utils/paths';
+import Layout from "../layouts/Layout.astro";
+import Title1 from "../components/mdx/typography/Title1.astro";
+import Title2 from "../components/mdx/typography/Title2.astro";
+import Title3 from "../components/mdx/typography/Title3.astro";
+import SmallCaps from "../components/mdx/typography/SmallCaps.astro";
+import PageWrapper from "../components/layouts/PageWrapper.astro";
+import ProseWrapper from "../components/layouts/ProseWrapper.astro";
+import UnderlineHoverLink from "../components/mdx/UnderlineHoverLink.astro";
+import { siteConfig } from "../utils/siteConfig";
 ---
-<BaseLayout title="About" description="Operational context for how and why this site exists.">
-  <div class="article">
-    <header>
-      <p class="muted">About</p>
-      <h1>Shailesh</h1>
-      <p class="muted">Working across product, engineering, communications, and delivery.</p>
-    </header>
 
-    <div class="visual-panel" style="margin-bottom:1.4rem;">
-      <div class="visual-rows">
-        <div class="visual-row">
-          <span class="visual-dot"></span>
-          <div>
-            <strong>Practice</strong>
-            <div class="visual-line"></div>
-          </div>
-        </div>
-        <div class="visual-row">
-          <span class="visual-dot" style="background:#0f4c5a;"></span>
-          <div>
-            <strong>Philosophy</strong>
-            <div class="visual-line"></div>
-          </div>
-        </div>
-        <div class="visual-row">
-          <span class="visual-dot" style="background:#3a7a5b;"></span>
-          <div>
-            <strong>Working Notes</strong>
-            <div class="visual-line"></div>
-          </div>
-        </div>
-      </div>
-      <p class="muted" style="margin:0.9rem 0 0;">Read through the lane that matches your intent. Practice for execution, Philosophy for thinking, Working Notes for motion.</p>
-    </div>
+<Layout title={`About | ${siteConfig.title}`} desc={siteConfig.description}>
+	<PageWrapper>
+		<div class="header-section">
+			<SmallCaps>About</SmallCaps>
+			<Title1>Shailesh Rawat</Title1>
+			<Title2>Techno-functional analyst & communicator enabling AI integration and adoption.</Title2>
+		</div>
 
-    <h2>I’m Shailesh</h2>
-    <p>
-      I’m using this site to make my way of thinking and working visible, because most of the roles I’m aiming for sit in
-      the gaps between product, engineering, communications, and delivery. Those gaps are hard to explain in a résumé and easy to misunderstand in interviews.
-    </p>
-    <p>
-      This is not an attempt to build a personal brand. It’s an attempt to show how I actually operate when I’m given a problem, some constraints, and room to think.
-    </p>
+		<section class="contact-grid">
+			<div>
+				<h3>Contact</h3>
+				<ul>
+					<li>
+						<UnderlineHoverLink href="tel:+918126539464">+91-8126539464</UnderlineHoverLink>
+					</li>
+					<li>
+						<UnderlineHoverLink href="mailto:shailesh.rawat603@gmail.com">
+							shailesh.rawat603@gmail.com
+						</UnderlineHoverLink>
+					</li>
+					<li>Pune, Maharashtra - 411021</li>
+					<li>
+						<UnderlineHoverLink href="https://linkedin.com/in/shailesh-rawat/">
+							linkedin.com/in/shailesh-rawat
+						</UnderlineHoverLink>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<h3>Focus</h3>
+				<ul>
+					<li>Enabling business management, product clarity, and technology translation.</li>
+					<li>Prompt engineering & LLM ops for documentation, enablement, and adoption.</li>
+					<li>Collaborating across product, engineering, and strategy teams toward shared goals.</li>
+					<li>Structured comms grounded in pragmatism, cultural awareness, and cognitive empathy.</li>
+				</ul>
+			</div>
+		</section>
 
-    <h2>Why this site exists</h2>
-    <p>
-      I’m at a stage where I’m deliberately investing time in building clarity, not just outputs.
-    </p>
-    <p>
-      I’ve spent time in communications, moved closer to product and delivery, and now work across systems, documentation, and execution. What I’ve seen repeatedly is that teams don’t fail because they lack tools. They fail because context is fragmented, decisions are poorly articulated, and thinking is outsourced or rushed.
-    </p>
-    <p>This site is a response to that.</p>
-    <ul>
-      <li>think in public without turning everything into advice</li>
-      <li>show how ideas move from rough notes to applied work</li>
-      <li>demonstrate technical writing and documentation judgment alongside execution</li>
-      <li>separate finished thinking from thinking-in-progress</li>
-    </ul>
+		<ProseWrapper>
+			<div class="lede">
+				<p>
+					I help teams apply GenAI and LLM tools to reduce friction and ship confidently. From documentation
+					and enablement playbooks to training datasets and comms plans, my work translates complex systems
+					into decisions people can act on.
+				</p>
+				<p>Thinker. Tinkerer. Translator. This garden captures the philosophy behind that practice.</p>
+			</div>
+		</ProseWrapper>
 
-    <h2>How I use this space</h2>
-    <p>The structure is intentional.</p>
-    <p><strong>Practice</strong> is where I document execution that has been examined. Not just what was done, but why it was done that way, what constraints mattered, and what changed as a result.</p>
-    <p><strong>Philosophy</strong> is where I explore systems, AI, work, writing, and meaning. These pieces exist to sharpen my thinking, not to convince or persuade.</p>
-    <p><strong>Working Notes</strong> are deliberately incomplete. They are where ideas start, where experiments live, and where uncertainty is allowed. Some of these notes may later become Practice or Philosophy. Many will not.</p>
-    <p><strong>Documentation</strong> lives separately in <strong>Verse</strong>. That is where I document tools, systems, patterns, and writing structures properly, using established documentation principles. I keep it separate because mixing narrative and reference usually degrades both.</p>
+		<section class="focus-grid">
+			{
+				siteConfig.focusAreas.map((area) => (
+					<div class="focus-card">
+						<h3>{area.title}</h3>
+						<ul>
+							{area.items.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					</div>
+				))
+			}
+		</section>
 
-    <h2>How I actually work</h2>
-    <p>I tend to write before I build, not as a habit, but as a way to reduce ambiguity early.</p>
-    <ul>
-      <li>understand the narrative of a problem before committing to a solution</li>
-      <li>build the smallest useful artifact that changes something real</li>
-      <li>document decisions while they are being made, not after outcomes are known</li>
-    </ul>
-    <p>I’m not interested in speed for its own sake. I’m interested in calm, repeatable execution that other people can understand and build on.</p>
+		<section class="content-columns">
+			<div>
+				<Title3>Pruning philosophy</Title3>
+				<ul>
+					<li>✂️ Prune to grow: subtract complexity with purpose.</li>
+					<li>🌤 Low light living: work with imperfect conditions.</li>
+					<li>🌱 Trailing isn’t failing: nonlinear paths still build momentum.</li>
+				</ul>
+			</div>
+			<div>
+				<Title3>How to explore</Title3>
+				<ul>
+					<li>Sticky Notes Springboard: small insights that nudge healing.</li>
+					<li>Echoes & Ethos: reflections on marketing, creativity, burnout, identity.</li>
+					<li>Terms & Conditions: the fine print of being human at work.</li>
+					<li>
+						Start in the <a href="/garden">garden</a> to filter by topic, or jump to the{" "}
+						<a href="/now">Now</a> page for what’s in motion.
+					</li>
+				</ul>
+			</div>
+			<div>
+				<Title3>Projects</Title3>
+				<ul>
+					<li>
+						<UnderlineHoverLink href="https://github.com/san-serif-sentiments">
+							San Serif Sentiments
+						</UnderlineHoverLink>
+						<span class="note"> — language & research sandbox</span>
+					</li>
+					<li>
+						<UnderlineHoverLink href="https://gitbook.ai">Gitbook (AI Handbook)</UnderlineHoverLink>
+					</li>
+					<li>
+						<UnderlineHoverLink href="https://www.lioxpanes.com">Lioxpanes.com</UnderlineHoverLink>
+						<span class="note"> — branding & site development</span>
+					</li>
+					<li>
+						<UnderlineHoverLink href="https://www.pruningmypothos.com">
+							Pruning My Pothos
+						</UnderlineHoverLink>
+						<span class="note"> — personal philosophy journal</span>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<Title3>Skills</Title3>
+				<ul>
+					<li>Critical & strategic thinking; continuous improvement & change readiness.</li>
+					<li>Generative AI & prompt engineering; AI-augmented content & enablement.</li>
+					<li>Strategy roadmapping, go-to-market execution, digital transformation & adoption.</li>
+					<li>Product management, requirements gathering, UAT, and storytelling for complex systems.</li>
+					<li>Comms (strategic, marketing, change, crisis), SEO & content strategy, CMS governance.</li>
+				</ul>
+			</div>
+		</section>
+	</PageWrapper>
+</Layout>
 
-    <h2>Where this is going</h2>
-    <p>This site is not finished and is not meant to be.</p>
-    <p>
-      It’s a working surface while I continue to study, build, and look for roles where this kind of cross-functional thinking is valued rather than flattened into titles.
-    </p>
-    <p>
-      If you’re here to skim, the structure should help you decide where to look. If you’re here to read, the pacing should make that possible.
-    </p>
-    <p>That’s enough context.</p>
+<style>
+	.header-section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2xs);
+		margin-top: var(--space-xl);
+		margin-bottom: var(--space-m);
+	}
 
-    <div style="margin-top:1.8rem; display:flex; gap:0.75rem; flex-wrap:wrap;">
-      <a class="button" href={withBase('/practice')}>Enter Practice</a>
-      <a class="button light" href={withBase('/philosophy')}>Read Philosophy</a>
-      <a class="button light" href={withBase('/working-notes')}>Browse Working Notes</a>
-      <a class="button light" href="https://pruning-my-pothos.github.io/verse/" target="_blank" rel="noreferrer">Open Documentation</a>
-    </div>
-  </div>
-</BaseLayout>
+	.lede p {
+		font-size: var(--font-size-lg);
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: var(--space-m);
+		padding: var(--space-s) 0;
+	}
+
+	.contact-grid h3 {
+		margin: 0 0 var(--space-3xs);
+		font-family: var(--font-sans);
+		font-size: var(--font-size-base);
+		color: var(--color-gray-800);
+		font-weight: 600;
+	}
+
+	.contact-grid ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: var(--space-3xs);
+		color: var(--color-gray-800);
+		font-family: var(--font-sans);
+		font-size: var(--font-size-sm);
+	}
+
+	.focus-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: var(--space-s);
+		margin: var(--space-l) 0;
+	}
+
+	.focus-card {
+		border: 1px solid var(--color-tinted-cream);
+		border-radius: 12px;
+		padding: var(--space-s);
+		background: var(--color-cream);
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.02);
+	}
+
+	.focus-card h3 {
+		margin: 0 0 var(--space-3xs);
+		font-family: var(--font-sans);
+		font-size: var(--font-size-base);
+		color: var(--color-gray-800);
+		font-weight: 600;
+	}
+
+	.focus-card ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: var(--space-3xs);
+	}
+
+	.focus-card li {
+		font-family: var(--font-sans);
+		font-size: var(--font-size-sm);
+		color: var(--color-gray-600);
+	}
+
+	.content-columns {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: var(--space-m);
+		margin-top: var(--space-l);
+	}
+
+	.content-columns ul {
+		padding-left: var(--space-s);
+		color: var(--color-gray-800);
+		font-family: var(--font-sans);
+		font-size: var(--font-size-base);
+		display: grid;
+		gap: var(--space-2xs);
+	}
+
+	.content-columns a {
+		color: var(--color-crimson);
+		text-decoration: underline;
+	}
+
+	.content-columns a:hover {
+		color: var(--color-bright-crimson);
+	}
+
+	.note {
+		color: var(--color-gray-500);
+		margin-left: var(--space-4);
+		font-size: var(--font-size-xs);
+	}
+</style>

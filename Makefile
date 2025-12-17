@@ -1,4 +1,4 @@
-.PHONY: install dev build preview push publish
+.PHONY: install dev build preview deploy push
 
 install:
 	npm install
@@ -12,15 +12,15 @@ build:
 preview:
 	npm run preview
 
-push:
-	git add .
-	git commit -m "chore: update prose" || true
-	git push origin main
+deploy:
+	./deploy.sh
 
-publish:
-	npm run build
-	npm run preview &
-	@echo "For GitHub Pages, push to main:"
+branch := $(shell git rev-parse --abbrev-ref HEAD)
+MSG ?= chore: update site
+
+push:
+	@echo "Current branch: $(branch)"
+	@git status --short
 	git add .
-	git commit -m "chore: publish prose" || true
-	git push origin main
+	@git diff --cached --quiet && echo "No staged changes to commit." || git commit -m "$(MSG)"
+	git push origin $(branch)

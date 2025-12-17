@@ -1,0 +1,122 @@
+<svg
+	id="logo"
+	width="120"
+	height="32"
+	viewBox="0 0 120 32"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+	transition:persist
+>
+	<g class="mark">
+		<path
+			class="leaf leaf-primary"
+			d="M30 4.5C40.5 7 47 16.5 43 24.5c-3.8 7.5-14.4 9.7-20.6 3.8C16.2 23.5 18 13.4 30 4.5Z"
+			fill="#0F766E"
+		/>
+		<path
+			class="leaf leaf-secondary"
+			d="M46.5 6.8c7.5 5.3 9.8 15.2 4.8 22C45.7 36 34 34.6 29.8 26.7c-4.2-7.9 1-18.8 16.7-19.9Z"
+			fill="#0D4E56"
+		/>
+		<path
+			class="stem"
+			d="M33 9c-1 6.2-1.2 11.8-5.4 16.8"
+			stroke="#0F766E"
+			stroke-width="2"
+			stroke-linecap="round"
+		/>
+		<circle class="node" cx="62" cy="16" r="2.8" fill="#1F2937" />
+		<line x1="52" y1="16" x2="88" y2="16" stroke="#1F2937" stroke-width="2" stroke-linecap="round" />
+		<circle class="node" cx="96" cy="16" r="2.8" fill="#1F2937" />
+		<line x1="88" y1="16" x2="96" y2="8" stroke="#0F766E" stroke-width="2" stroke-linecap="round" />
+		<line x1="88" y1="16" x2="96" y2="24" stroke="#0F766E" stroke-width="2" stroke-linecap="round" />
+	</g>
+</svg>
+
+<style>
+	#logo {
+		cursor: pointer;
+		transition: transform 0.2s ease, filter 0.2s ease;
+		filter: drop-shadow(0 4px 12px rgba(17, 24, 39, 0.06));
+	}
+
+	#logo:hover {
+		transform: scale(1.04);
+		filter: drop-shadow(0 6px 18px rgba(17, 24, 39, 0.1));
+	}
+
+	.leaf {
+		transform-origin: center;
+		transform-box: fill-box;
+	}
+
+	.css-animate .leaf-primary {
+		animation: float 1.2s ease-in-out;
+	}
+
+	.css-animate .leaf-secondary {
+		animation: float 1.2s ease-in-out 0.05s;
+	}
+
+	.css-animate .stem {
+		animation: pulse 1s ease-in-out;
+	}
+
+	.css-animate .node {
+		animation: pop 0.6s ease-in-out;
+	}
+
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-2px);
+		}
+	}
+
+	@keyframes pulse {
+		0%,
+		100% {
+			stroke-opacity: 1;
+		}
+		50% {
+			stroke-opacity: 0.6;
+		}
+	}
+
+	@keyframes pop {
+		0% {
+			transform: scale(0.9);
+			opacity: 0.6;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+</style>
+
+<script>
+	function handleLogoAnimation() {
+		const logo = document.getElementById("logo");
+		if (logo) {
+			logo.classList.add("css-animate");
+			setTimeout(() => {
+				logo.classList.remove("css-animate");
+			}, 900);
+		}
+	}
+
+	function initializeLogoAnimation() {
+		const logo = document.getElementById("logo");
+		if (logo) {
+			logo.removeEventListener("mouseenter", handleLogoAnimation);
+			logo.addEventListener("mouseenter", handleLogoAnimation);
+		}
+	}
+
+	document.addEventListener("DOMContentLoaded", initializeLogoAnimation);
+	document.addEventListener("astro:page-load", initializeLogoAnimation);
+</script>

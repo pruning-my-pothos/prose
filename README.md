@@ -1,111 +1,38 @@
-# Pruning My Pothos
+# Maggieappleton.com, Version 3
 
-Personal site built with Astro content collections. Reading-first execution journal for applied practice, philosophy, and working notes.
+This is the source code for maggieappleton.com, a digital garden filled with growing notes, essays,
+and design patterns.
 
-## Quickstart
-- Install: `npm install`
-- Develop: `npm run dev` then open http://localhost:4321/prose/
-- Build: `npm run build`
-- Preview production build: `npm run preview`
-- Shortcuts: `make dev`, `make build`, `make preview`, `make push` (add/commit/push), `make publish` (build + push)
+It's open source to let people poke around and get ideas for their own garden. However, I'd rather
+you didn't fork it wholesale in order to build your own garden. First because my code is
+questionable at best, and second because I designed it according to my own aesthetic preferences,
+and functional needs / desires. Yours won't be the same.
 
-## Content model
-Content lives in `src/content/` as Markdown. All entries share:
-`title`, `description`, `date`, `tags`, `status` (`draft` | `published`), `featured` (`true` | `false`).
+It's also awkward when I stumble on someone else's website that is an exact expression of my own
+design taste and identity. Like walking in on someone wearing your clothing. That said, you can do
+what you like on the web and I'm not going to make a huge fuss about it.
 
-Collections:
-- `work/` (Practice) adds `problem`, `approach`, `outcome`, `tools` (array), `links` (array of `{ label, url }`).
-- `lab/` (Working Notes: experiments) adds `hypothesis`, `build_notes`, `next_iteration`.
-- `philosophy/` adds `lane` (`philosophy`), still using shared writing schema.
-- `creative/`, `comms/` serve as Working Notes lanes with `lane` (`creative` | `comms`).
+I strongly encourage you to build your own garden!
 
-### Adding a Work case study
-Create `src/content/work/my-case.md`:
-```md
----
-title: Title
-description: Short description
-date: 2024-09-01
-tags: ["product", "delivery"]
-status: published
-featured: true
-problem: The gap we needed to close.
-approach: How we tackled it.
-outcome: The measurable result.
-tools: ["Tool A", "Tool B"]
-links:
-  - label: Artifact
-    url: https://example.com
----
-Body content here.
-```
+## Tech Stack
 
-### Adding a Lab experiment
-```md
----
-title: Experiment name
-description: What you tried
-date: 2024-09-02
-tags: ["ai", "workflow"]
-status: published
-featured: false
-hypothesis: What you expect to learn.
-build_notes: How you built it.
-next_iteration: What happens next.
----
-Observations and notes.
-```
+Built with Astro
 
-### Adding Writing (philosophy | creative | comms)
-```md
----
-title: Essay title
-description: One-line summary
-date: 2024-09-03
-tags: ["writing", "systems"]
-status: published
-featured: false
-lane: philosophy
----
-Essay content here.
-```
+MDX  
+Backlinks  
+Tooltip hover previews with Tippy.js  
+Masonry grids with just CSS  
+Webmentions with Brid.gy and Webmention.io  
+Typed collections – essays, notes, patterns, talks, podcasts, smidgeons, library, antilibrary, and
+now updates
 
-## Routes
-- `/practice` and `/practice/[slug]` (from `work/`)
-- `/philosophy` and `/philosophy/[slug]`
-- `/working-notes` and `/working-notes/[slug]` (aggregates `lab/`, `creative/`, `comms/`)
-- Legacy: `/lab`, `/work`, `/writing/*` still resolve but the primary navigation uses the above.
-- `/about`
-- `/rss.xml` (philosophy + working notes feed)
+## Notes to Myself
 
-## How to add content quickly
-- Practice: add a file under `src/content/work/` with the Practice schema. Include a clear problem, decision/approach, and outcome. Set `featured: true` to surface on the homepage.
-- Philosophy: add under `src/content/philosophy/` with `lane: philosophy`. Keep paragraphs short; the reading layout enforces a narrow column.
-- Working Notes: add under `src/content/lab/` for experiments or under `src/content/creative/` and `src/content/comms/` for other lanes. These aggregate at `/working-notes`.
-- Use the links field in Practice to point at verse or other artifacts; base path aware links should use absolute URLs.
+To run locally: `npm run dev`  
+To deploy: `./deploy.sh`
 
-## Deployment and GitHub Pages
-- `make push` will add/commit/push to `main`.
-- GitHub Actions workflow at `.github/workflows/deploy.yml` builds on pushes to `main` and deploys via Pages.
-- Ensure `astro.config.mjs` `site` is set to `https://pruning-my-pothos.github.io/prose/` (default) or your chosen domain, with `base: '/prose'`.
-- Published site: `https://pruning-my-pothos.github.io/prose/` and RSS at `/prose/rss.xml`.
+- Runs `git push`
+- Runs `npm run build`
+- Runs `vercel --prod`
 
-## Base path and SEO
-- Site title: **Pruning My Pothos**
-- Base path is `/prose` for GitHub Pages. `astro.config.mjs` is set to `https://pruning-my-pothos.github.io/prose/` with `base: '/prose'`; adjust if your hosting changes.
-- Open Graph and basic meta tags are handled in `src/components/Seo.astro`. The default social image lives at `public/social-card.svg`.
-
-## GitHub Pages deployment
-- Workflow: `.github/workflows/deploy.yml` builds on pushes to `main` and deploys via GitHub Pages.
-- In repository settings, enable Pages with source **GitHub Actions**.
-- Ensure `astro.config.mjs` has `site` pointing to your live URL (for example `https://<user>.github.io/prose`) and `base: '/prose'`.
-- Docs/verse link lives at `https://pruning-my-pothos.github.io/verse/` in the header and footer; update it to your target URL if it changes.
-
-## Publishing workflow
-1) Commit content and code changes to `main` (or open a PR).
-2) GitHub Actions runs the build and publishes to Pages.
-3) Verify the live site at the Pages URL and the RSS feed at `/prose/rss.xml`.
-
-## Notes
-- Reading layout is narrow (max 720px), 19px body size, and generous line height for a Medium/Substack-like experience.
-- Cards appear only on listing pages; essays render in a clean column without callouts.
+Building locally for speed and Astro's image caching.
