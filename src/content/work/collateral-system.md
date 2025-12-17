@@ -43,12 +43,42 @@ links:
 5) **Enablement loop** – One live deal, one dry run, one retro. Updated the library after each pass.  
 
 ### Template architecture (excerpt)
-| Section | Purpose | Evidence to attach | Owner |
-| --- | --- | --- | --- |
-| Problem framing | Ground the ask in the customer context | Industry datapoint + customer quote | Solutions |
-| Differentiation | Contrast against status quo and competitors | 2–3 bullets + visual | Product Marketing |
-| Proof | Make it credible | Case study + metric + reference | Customer Success |
-| Delivery & risk | Show feasibility and controls | Implementation plan + security FAQ | Delivery / Security |
+<table class="rich-table">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Purpose</th>
+      <th>Evidence to attach</th>
+      <th>Owner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Problem framing</strong></td>
+      <td>Ground the ask in customer context and constraints.</td>
+      <td>Industry datapoint + customer quote.</td>
+      <td>Solutions</td>
+    </tr>
+    <tr>
+      <td><strong>Differentiation</strong></td>
+      <td>Contrast with status quo and competitors.</td>
+      <td>2–3 bullets + visual that shows the delta.</td>
+      <td>Product Marketing</td>
+    </tr>
+    <tr>
+      <td><strong>Proof</strong></td>
+      <td>Make the claims credible.</td>
+      <td>Case study + metric + reference contact.</td>
+      <td>Customer Success</td>
+    </tr>
+    <tr>
+      <td><strong>Delivery & risk</strong></td>
+      <td>Show feasibility, controls, and who is accountable.</td>
+      <td>Implementation plan + security FAQ + DPA summary.</td>
+      <td>Delivery / Security</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Governance and freshness
 - **Review cadence:** Critical blocks monthly, standard blocks quarterly, compliance on every policy update.
@@ -59,6 +89,14 @@ links:
 - **Findability:** Library is indexed by industry, capability, and buying stage; every block links back to its source doc.
 - **RFP-ready views:** Curated “packs” for common segments (enterprise SaaS, regulated industries, public sector) with pre-attached evidence.
 - **Review lanes:** Legal/Security review only the scoped sections; Product reviews differentiation; Delivery reviews feasibility.
+
+<div class="callout info">
+  <strong>Review rhythm:</strong> Stagger critical content (security, compliance) with monthly checks; keep differentiation blocks on a quarterly cadence to avoid churn.
+</div>
+
+<div class="callout warning">
+  <strong>Anti-pattern:</strong> Avoid copying vendor boilerplate into every response. It bloats review time and erodes trust when details drift from the source-of-truth documents.
+</div>
 
 ## Outcomes
 - Turnaround time dropped by ~15% in quarter one because writers pulled governed blocks instead of reinventing copy.

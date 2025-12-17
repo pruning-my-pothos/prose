@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Narrative library · Verse</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0d0d0c;
+      --muted: #4a463f;
+      --accent: #0c5a69;
+      --border: #e9e5df;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Manrope", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #ffffff, #f7fbfa);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 28px 16px 40px;
+    }
+    .shell { max-width: 960px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 22px 24px 28px; box-shadow: 0 16px 42px rgba(0,0,0,0.06); }
+    h1, h2, h3 { font-family: "IBM Plex Serif","Georgia",serif; margin: 0 0 0.6rem; }
+    h1 { font-size: 1.9rem; }
+    h2 { font-size: 1.35rem; margin-top: 1.3rem; }
+    p { margin: 0.6rem 0 1rem; color: var(--muted); }
+    ul { margin: 0.4rem 0 1rem 1.1rem; color: var(--muted); }
+    .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.7rem; border-radius: 12px; background: #f1fbf7; color: var(--text); border: 1px solid #cfeee6; font-weight: 700; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 0.8rem; margin-top: 0.6rem; }
+    .card { border: 1px solid var(--border); border-radius: 12px; padding: 0.85rem 0.95rem; background: var(--card); box-shadow: 0 10px 28px rgba(0,0,0,0.05); }
+    .card h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+    .tag { display: inline-block; margin-top: 0.15rem; padding: 0.2rem 0.6rem; border-radius: 10px; background: #f6fbf9; border: 1px solid #cfeee6; font-weight: 700; color: var(--text); }
+    .callout { border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 0.9rem; margin: 0.7rem 0; background: #f4fbff; box-shadow: 0 12px 32px rgba(0,0,0,0.04); }
+    .callout strong { display: block; margin-bottom: 0.2rem; }
+    table { width: 100%; border-collapse: collapse; margin: 0.8rem 0 1rem; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    th, td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); text-align: left; color: var(--muted); }
+    thead th { background: #f6fbf9; color: var(--text); font-weight: 700; }
+    tbody tr:nth-child(odd) { background: #fbfefc; }
+    .muted { color: var(--muted); }
+    @media(max-width:640px){ body{padding:16px;} .shell{padding:18px;} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:0.8rem;flex-wrap:wrap;">
+      <h1>Narrative library</h1>
+      <span class="badge">Verse · Internal reference</span>
+    </div>
+    <p class="muted">Curated narrative blocks for RFPs, proposals, and enablement. Each block carries ownership, freshness, and usage notes.</p>
+
+    <div class="callout">
+      <strong>How to use this</strong>
+      <span class="muted">Pick a lane, copy the approved block, and attach the right evidence. Ownership and review dates are always visible.</span>
+    </div>
+
+    <h2>Core blocks</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Value narrative</h3>
+        <p class="muted">Problem framing, outcomes, and how we change the baseline.</p>
+        <span class="tag">Owner: Product Marketing</span>
+      </div>
+      <div class="card">
+        <h3>Security & compliance</h3>
+        <p class="muted">Security posture, controls, certifications, and data handling.</p>
+        <span class="tag">Owner: Security</span>
+      </div>
+      <div class="card">
+        <h3>Implementation</h3>
+        <p class="muted">Rollout plan, milestones, and responsibilities.</p>
+        <span class="tag">Owner: Delivery</span>
+      </div>
+      <div class="card">
+        <h3>Evidence blocks</h3>
+        <p class="muted">Case studies, metrics, and references with freshness dates.</p>
+        <span class="tag">Owner: Customer Success</span>
+      </div>
+    </div>
+
+    <h2>Metadata per block</h2>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Owner</td><td>Who approves updates and handles escalations.</td></tr>
+        <tr><td>Last reviewed</td><td>Signals freshness; triggers next review.</td></tr>
+        <tr><td>Usage notes</td><td>Where this block fits (segment, product, journey stage).</td></tr>
+        <tr><td>Allowed edits</td><td>What can be tailored vs. locked.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="background:#fff8ef;border-color:#f5d8a8;">
+      <strong>Guardrails</strong>
+      <span class="muted">Never rewrite locked compliance language. Flag deltas back to the source doc owner.</span>
+    </div>
+  </div>
+</body>
+</html>

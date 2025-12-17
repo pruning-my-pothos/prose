@@ -782,6 +782,78 @@ blockquote strong {
   color: var(--text);
 }
 
+.article table,
+.rich-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.4rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
+}
+
+.article table th,
+.article table td,
+.rich-table th,
+.rich-table td {
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.article table thead th,
+.rich-table thead th {
+  background: #f6fbf9;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.article table tbody tr:nth-child(odd),
+.rich-table tbody tr:nth-child(odd) {
+  background: #fbfefc;
+}
+
+.article table tbody tr:nth-child(even),
+.rich-table tbody tr:nth-child(even) {
+  background: #ffffff;
+}
+
+.callout {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.85rem 0.95rem;
+  margin: 1rem 0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+}
+
+.callout strong {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+.callout.info {
+  background: #f4fbff;
+  border-color: #c9e4f7;
+}
+
+.callout.warning {
+  background: #fff8ef;
+  border-color: #f5d8a8;
+}
+
+.callout.success {
+  background: #f2fbf6;
+  border-color: #cdeedc;
+}
+
+.callout.muted {
+  background: #f8f7f5;
+  border-color: #e4dfd8;
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(12, 90, 105, 0.3);

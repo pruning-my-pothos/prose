@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Collateral templates · Verse</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0d0d0c;
+      --muted: #4a463f;
+      --accent: #0c5a69;
+      --border: #e9e5df;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:"Manrope",system-ui,-apple-system,sans-serif; background: linear-gradient(135deg,#ffffff,#f7fbfa); color:var(--text); line-height:1.7; padding:28px 16px 40px; }
+    .shell { max-width: 960px; margin:0 auto; background:#fff; border:1px solid var(--border); border-radius:16px; padding:22px 24px 28px; box-shadow:0 16px 42px rgba(0,0,0,0.06); }
+    h1,h2,h3 { font-family:"IBM Plex Serif","Georgia",serif; margin:0 0 0.6rem; }
+    h1 { font-size:1.9rem; }
+    h2 { font-size:1.35rem; margin-top:1.2rem; }
+    p { margin:0.6rem 0 1rem; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:0.9rem; margin-top:0.4rem; }
+    .card { border:1px solid var(--border); border-radius:12px; padding:0.85rem 0.95rem; background:var(--card); box-shadow:0 10px 28px rgba(0,0,0,0.05); }
+    .card h3 { margin:0 0 0.25rem; font-size:1.05rem; }
+    .badge { display:inline-flex; align-items:center; gap:0.35rem; padding:0.35rem 0.7rem; border-radius:12px; background:#f1fbf7; color:var(--text); border:1px solid #cfeee6; font-weight:700; }
+    .callout { border:1px solid var(--border); border-radius:12px; padding:0.8rem 0.9rem; margin:0.7rem 0; background:#f4fbff; box-shadow:0 12px 32px rgba(0,0,0,0.04); }
+    .callout strong { display:block; margin-bottom:0.2rem; }
+    table { width:100%; border-collapse:collapse; margin:0.8rem 0 1rem; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+    th,td { padding:0.65rem 0.75rem; border-bottom:1px solid var(--border); text-align:left; color:var(--muted); }
+    thead th { background:#f6fbf9; color:var(--text); font-weight:700; }
+    tbody tr:nth-child(odd) { background:#fbfefc; }
+    .muted { color:var(--muted); }
+    @media(max-width:640px){ body{padding:16px;} .shell{padding:18px;} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:0.8rem;flex-wrap:wrap;">
+      <h1>Collateral templates</h1>
+      <span class="badge">Verse · Internal reference</span>
+    </div>
+    <p class="muted">Reusable templates that align to the buyer journey. Pair each with the governed narratives from the library.</p>
+
+    <div class="callout">
+      <strong>Workflow</strong>
+      <span class="muted">Choose the segment pack, drop in the right narratives, and attach evidence. Keep compliance language locked.</span>
+    </div>
+
+    <h2>Segment packs</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Enterprise SaaS</h3>
+        <p class="muted">Complex buying teams, integration depth, and security scrutiny.</p>
+      </div>
+      <div class="card">
+        <h3>Regulated industries</h3>
+        <p class="muted">Adds controls, auditability, and regulator-facing language.</p>
+      </div>
+      <div class="card">
+        <h3>Public sector</h3>
+        <p class="muted">Procurement steps, transparency, and accessibility requirements.</p>
+      </div>
+    </div>
+
+    <h2>Template contents</h2>
+    <table>
+      <thead><tr><th>Section</th><th>Included blocks</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Cover + summary</td><td>Value narrative, segment-specific hook.</td><td>Keep to 1 page.</td></tr>
+        <tr><td>Problem & context</td><td>Problem framing, customer context block.</td><td>Tailor to industry language.</td></tr>
+        <tr><td>Solution fit</td><td>Differentiation, architecture snapshot.</td><td>Link to architecture appendix.</td></tr>
+        <tr><td>Proof</td><td>Evidence blocks, references, metrics.</td><td>At least one segment-matched proof.</td></tr>
+        <tr><td>Security & compliance</td><td>Security posture, certifications, DPAs.</td><td>Locked text; only attach fresh PDFs.</td></tr>
+        <tr><td>Delivery & success</td><td>Implementation plan, roles, timeline.</td><td>Highlight risks and mitigations.</td></tr>
+        <tr><td>Appendix</td><td>Glossary, abbreviations, extra FAQs.</td><td>Keep optional; don’t bloat.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout" style="background:#fff8ef;border-color:#f5d8a8;">
+      <strong>Reminder</strong>
+      <span class="muted">If a block is past its review date, update it in the library before shipping the template.</span>
+    </div>
+  </div>
+</body>
+</html>
