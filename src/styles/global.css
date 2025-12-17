@@ -363,6 +363,49 @@ main {
   border-color: #cfeee6;
 }
 
+.diy-intel {
+  margin-top: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(12, 90, 105, 0.08), rgba(255, 255, 255, 0.96));
+  padding: 0.85rem 0.95rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.diy-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.diy-marquee {
+  margin-top: 0.35rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.diy-loop {
+  display: inline-flex;
+  gap: 1.4rem;
+  min-width: max-content;
+  animation: slideLoop 16s linear infinite;
+  padding: 0.15rem 0;
+}
+
+.diy-loop span {
+  font-weight: 700;
+  color: #0b4f58;
+  background: #f1fbf7;
+  border: 1px solid #cfeee6;
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
@@ -916,9 +959,19 @@ blockquote strong {
   }
 }
 
+@keyframes slideLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pulse-dot,
-  .visual-glow {
+  .visual-glow,
+  .diy-loop {
     animation: none !important;
   }
 }
