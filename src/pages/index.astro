@@ -18,41 +18,130 @@ const comms = (await getCollection('comms', isPublished)).sort(sortByDateDesc);
 const workingNotes = [...lab, ...creative, ...comms].sort(sortByDateDesc);
 const notesSnapshot = workingNotes.slice(0, 2);
 ---
-<BaseLayout title="Pruning My Pothos" description="A reading-first journal of applied practice, philosophy, and working notes.">
-  <section class="hero">
-    <div>
-      <p class="highlight">Pruning My Pothos is a working surface for applied practice, philosophical thinking, and disciplined experimentation.</p>
-      <p class="muted" style="margin-top:0.8rem;">
-        It is meant to be read slowly. Practice captures examined execution. Philosophy carries the thinking behind the moves. Working Notes collect drafts and experiments that might grow into either.
-      </p>
+<BaseLayout title="Pruning My Pothos" description="A deliberate journal of applied practice, philosophy, and working notes.">
+<section class="hero premium-hero">
+  <div class="hero-copy">
+    <p class="highlight">Pruning My Pothos is a working surface for applied practice, philosophical thinking, and disciplined experimentation.</p>
+    <p class="muted" style="margin-top:0.8rem;">
+      It is meant to be read slowly. Practice captures examined execution. Philosophy carries the thinking behind the moves. Working Notes collect drafts and experiments that might grow into either.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">Execution clarity</span>
+      <span class="pill soft">Systems thinking</span>
+      <span class="pill soft">Drafts in motion</span>
     </div>
-    <div class="visual-panel">
-      <div class="visual-rows">
-        <div class="visual-row">
-          <span class="visual-dot"></span>
-          <div>
-            <strong>Practice</strong>
-            <div class="visual-line"></div>
-          </div>
-        </div>
-        <div class="visual-row">
-          <span class="visual-dot" style="background: #0f4c5a;"></span>
-          <div>
-            <strong>Philosophy</strong>
-            <div class="visual-line"></div>
-          </div>
-        </div>
-        <div class="visual-row">
-          <span class="visual-dot" style="background: #3a7a5b;"></span>
-          <div>
-            <strong>Working Notes</strong>
-            <div class="visual-line"></div>
-          </div>
+  </div>
+  <div class="visual-panel hero-visual helper-panel">
+    <div class="visual-glow" aria-hidden="true"></div>
+    <div class="visual-header">
+      <div class="header-left">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <div>
+          <strong>Pick your next move</strong>
+          <p class="muted" style="margin:0;">Choose an intent and jump straight to what helps.</p>
         </div>
       </div>
-      <p class="muted" style="margin:1rem 0 0;">Follow a lane based on what you want: execution detail, conceptual depth, or exploratory sparks.</p>
+      <span class="micro-tag">Helper</span>
     </div>
-  </section>
+    <div class="helper-actions">
+      <a class="helper-chip" href={withBase('/practice')}>
+        <span>Ship a decision</span>
+        <small>Practice</small>
+      </a>
+      <a class="helper-chip" href={withBase('/philosophy')}>
+        <span>Shape a frame</span>
+        <small>Philosophy</small>
+      </a>
+      <a class="helper-chip" href={withBase('/working-notes')}>
+        <span>Browse drafts</span>
+        <small>Working Notes</small>
+      </a>
+    </div>
+    <div class="helper-accordions">
+      <details class="helper-accordion" open>
+        <summary>Shipping something this week</summary>
+        <p class="muted small-text">Jump to execution patterns, constraints, and outcomes that map to real work.</p>
+        <div class="helper-links">
+          <a class="button small" href={withBase('/practice')}>Open Practice</a>
+          <a class="text-link" href={withBase('/practice')}>See featured work</a>
+        </div>
+      </details>
+      <details class="helper-accordion">
+        <summary>Building a mental model</summary>
+        <p class="muted small-text">Find essays on systems, AI, and decision discipline without fluff.</p>
+        <div class="helper-links">
+          <a class="button small light" href={withBase('/philosophy')}>Open Philosophy</a>
+          <a class="text-link" href={withBase('/philosophy')}>Start with the latest</a>
+        </div>
+      </details>
+      <details class="helper-accordion">
+        <summary>Exploring ideas in motion</summary>
+        <p class="muted small-text">Skim drafts and experiments before they harden into a stance.</p>
+        <div class="helper-links">
+          <a class="button small light" href={withBase('/working-notes')}>Open Working Notes</a>
+          <a class="text-link" href={withBase('/working-notes')}>Read the newest notes</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="helper-grid">
+  <div class="helper-card">
+    <div class="helper-card-top">
+      <span class="pill soft">Execution kit</span>
+      <a class="text-link" href={withBase('/practice')}>Open Practice</a>
+    </div>
+    <details class="helper-accordion" open>
+      <summary>Need to decide fast</summary>
+      <ul class="helper-list">
+        <li>Frame the constraint, not the solution.</li>
+        <li>State the trade-offs and why they matter.</li>
+        <li>Show the observed outcome.</li>
+      </ul>
+    </details>
+    <div class="helper-actions-inline">
+      <a class="button small" href={withBase('/practice')}>See featured work</a>
+      <a class="text-link" href={withBase('/practice')}>Browse all</a>
+    </div>
+  </div>
+  <div class="helper-card">
+    <div class="helper-card-top">
+      <span class="pill soft">Thinking tool</span>
+      <a class="text-link" href={withBase('/philosophy')}>Open Philosophy</a>
+    </div>
+    <details class="helper-accordion" open>
+      <summary>Looking for a frame</summary>
+      <ul class="helper-list">
+        <li>Start with the question, not the metaphor.</li>
+        <li>Separate facts, inference, and opinion.</li>
+        <li>End with a working stance you can test.</li>
+      </ul>
+    </details>
+    <div class="helper-actions-inline">
+      <a class="button small light" href={withBase('/philosophy')}>See latest essay</a>
+      <a class="text-link" href={withBase('/philosophy')}>View archive</a>
+    </div>
+  </div>
+  <div class="helper-card">
+    <div class="helper-card-top">
+      <span class="pill soft">Draft lab</span>
+      <a class="text-link" href={withBase('/working-notes')}>Open Working Notes</a>
+    </div>
+    <details class="helper-accordion" open>
+      <summary>Exploring ideas in motion</summary>
+      <ul class="helper-list">
+        <li>Skim the premise; ignore polish.</li>
+        <li>Look for experiments before conclusions.</li>
+        <li>Follow the newest note to see momentum.</li>
+      </ul>
+    </details>
+    <div class="helper-actions-inline">
+      <a class="button small light" href={withBase('/working-notes')}>Read newest notes</a>
+      <a class="text-link" href={withBase('/working-notes')}>Browse all drafts</a>
+    </div>
+  </div>
+</section>
 
   <section style="margin-top:2.2rem;">
     <h2>How to read this site</h2>
@@ -125,7 +214,7 @@ const notesSnapshot = workingNotes.slice(0, 2);
 
   <section class="section-heading">
     <h2>Documentation</h2>
-    <a href="https://verse.YOURDOMAIN.com" target="_blank" rel="noreferrer">Open verse</a>
+    <a href="https://pruning-my-pothos.github.io/verse/" target="_blank" rel="noreferrer">Open verse</a>
   </section>
   <p class="muted" style="max-width:720px; margin-top:0.2rem;">Technical foundations and writing systems that support this site. Use when you want to see the scaffolding behind the words.</p>
 </BaseLayout>

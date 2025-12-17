@@ -99,7 +99,7 @@ Essay content here.
 - Workflow: `.github/workflows/deploy.yml` builds on pushes to `main` and deploys via GitHub Pages.
 - In repository settings, enable Pages with source **GitHub Actions**.
 - Ensure `astro.config.mjs` has `site` pointing to your live URL (for example `https://<user>.github.io/prose`) and `base: '/prose'`.
-- Docs/verse link lives at `https://verse.YOURDOMAIN.com` in the header and footer; update it to your target URL.
+- Docs/verse link lives at `https://pruning-my-pothos.github.io/verse/` in the header and footer; update it to your target URL if it changes.
 
 ## Publishing workflow
 1) Commit content and code changes to `main` (or open a PR).

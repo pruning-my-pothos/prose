@@ -7,12 +7,28 @@ import { withBase } from '../utils/paths';
       <span class="logo-dot"></span>
       <span>Pruning My Pothos</span>
     </a>
-    <nav class="nav-links">
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+      <span class="nav-toggle-label">Menu</span>
+    </button>
+    <nav class="nav-links" id="primary-nav">
       <a href={withBase('/practice')}>Practice</a>
       <a href={withBase('/philosophy')}>Philosophy</a>
       <a href={withBase('/working-notes')}>Working Notes</a>
       <a href={withBase('/about')}>About</a>
-      <a class="button light" href="https://verse.YOURDOMAIN.com" target="_blank" rel="noreferrer">Documentation</a>
+      <a class="button light" href="https://pruning-my-pothos.github.io/verse/" target="_blank" rel="noreferrer">Documentation</a>
     </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      nav.classList.toggle('open', !isOpen);
+    });
+  }
+</script>
