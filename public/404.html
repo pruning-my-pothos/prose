@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content="0; url=/prose/" />
+  </head>
+  <body>
+    <p>Redirecting…</p>
+    <script>
+      (function () {
+        var base = "/prose";
+        var path = window.location.pathname || "/";
+        var search = window.location.search || "";
+        var hash = window.location.hash || "";
+
+        // If the path is already under /prose, send to home; otherwise prefix /prose
+        if (!path.startsWith(base)) {
+          var fixed = base + (path.startsWith("/") ? path : "/" + path);
+          window.location.replace(fixed + search + hash);
+        } else {
+          window.location.replace(base + "/" + search + hash);
+        }
+      })();
+    </script>
+  </body>
+</html>
