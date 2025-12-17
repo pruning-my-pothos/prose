@@ -2,7 +2,6 @@
 import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 import { Icon } from "astro-icon/components";
-import WebMentions from "../components/layouts/WebMentions.astro";
 import Topics from "../components/layouts/Topics.astro";
 import GrowthIcon from "../components/layouts/GrowthIcon.astro";
 
@@ -11,7 +10,6 @@ type Props = {
 };
 
 const { frontmatter } = Astro.props;
-const currentSlug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 ---
 
 <Layout title={frontmatter.title} type="smidgeon">
@@ -97,7 +95,6 @@ const currentSlug = Astro.url.pathname.replace(/^\/|\/$/g, "");
 		</div>
 	</div>
 
-	<WebMentions postSlug={currentSlug} hasBacklinks={false} />
 </Layout>
 
 <style>

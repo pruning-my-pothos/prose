@@ -4,7 +4,6 @@ import type { MarkdownHeading } from "astro";
 import Layout from "./Layout.astro";
 import { Icon } from "astro-icon/components";
 import Backlinks from "../components/layouts/Backlinks.astro";
-import WebMentions from "../components/layouts/WebMentions.astro";
 import linkMaps from "../links.json";
 import GrowthIcon from "../components/layouts/GrowthIcon.astro";
 import Dates from "../components/layouts/Dates.astro";
@@ -136,8 +135,6 @@ const coverImage =
 	</main>
 
 	{backlinks.length ? <Backlinks backlinks={backlinks} /> : null}
-
-	<WebMentions postSlug={currentSlug} hasBacklinks={backlinks.length > 0} />
 </Layout>
 
 <style>

@@ -6,11 +6,16 @@ import icon from "astro-icon";
 import partytown from "@astrojs/partytown";
 import { remarkWikiLink } from "./src/plugins/remark-wiki-link";
 
+const useNoImageOptim = process.env.NO_IMAGE_OPTIM !== "false";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://pruningmypothos.com",
   image: {
-    domains: ["res.cloudinary.com"],
+    service: useNoImageOptim
+      ? { entrypoint: "astro/assets/services/noop" }
+      : { entrypoint: "astro/assets/services/sharp" },
+    domains: ["res.cloudinary.com", "images.unsplash.com"],
   },
   integrations: [
     mdx({

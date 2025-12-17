@@ -15,5 +15,5 @@ echo "Site built successfully."
 
 # Step 3: Deploy to Vercel
 echo "Deploying to Vercel production..."
-vercel --prod
+npx vercel --prod --token "${VERCEL_TOKEN:?Set VERCEL_TOKEN or run 'npx vercel login' first}"
 echo "Deployment to Vercel completed!"

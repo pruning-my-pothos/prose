@@ -198,8 +198,6 @@ versionSummary: "Major revision with new examples and conclusion" # What changed
 - Topic pages show latest versions only
 - Archived versions excluded from main discovery surfaces
 
-### Webmentions
-- Webmentions collected against canonical URLs
 - Displayed on latest version only
 - Historical social context preserved
 

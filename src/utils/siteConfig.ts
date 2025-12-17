@@ -30,8 +30,6 @@ export const siteConfig = {
 	],
 	rssTitle: "Pruning My Pothos RSS",
 	twitterHandle: "",
-	webmention: "",
-	pingback: "",
 	googleSiteVerification: "",
 	gaId: "",
 	relMe: "",

@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-
 const { url, title, author, image, small } = Astro.props;
 ---
 
@@ -13,13 +11,18 @@ const { url, title, author, image, small } = Astro.props;
 			boxShadow: "var(--box-shadow-lg)",
 		}}
 	>
-		<Image
+		<img
 			width={small ? 158 : 220}
 			height={small ? 228 : 319}
 			alt={title}
 			src={image}
+			loading="lazy"
 			style={{
 				borderRadius: "var(--border-radius-sm)",
+				objectFit: "cover",
+				width: "100%",
+				height: "100%",
+				display: "block",
 			}}
 		/>
 	</div>

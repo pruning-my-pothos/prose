@@ -65,8 +65,6 @@ declare global {
 			title={`${siteConfig.title} RSS`}
 			href="/rss.xml"
 		/>
-		{siteConfig.webmention && <link rel="webmention" href={siteConfig.webmention} />}
-		{siteConfig.pingback && <link rel="pingback" href={siteConfig.pingback} />}
 		{siteConfig.relMe && <link rel="me" href={siteConfig.relMe} />}
 		<link rel="canonical" href={canonicalURL} />
 		<ClientRouter />

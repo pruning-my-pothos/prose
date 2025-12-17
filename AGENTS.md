@@ -37,7 +37,6 @@ npm run build        # Production build
 - **Topics** - Auto-generated from frontmatter
 - **Content versioning** - Folder-based versioning with automatic canonical URLs
 - **OG image generation** - Dynamic Open Graph images using Satori and Sharp
-- **Webmentions** - Social interactions via webmention.io API with brid.gy to fetch from multiple sites
 - **Masonry grids** - CSS-only responsive layouts
 - **Draft system** - Content can be marked as drafts to hide from production
 - **View transitions** - Uses Astro's view transitions. This can cause issues with JavaScript scripts loading after page loads.
@@ -46,7 +45,6 @@ npm run build        # Production build
 
 - `generate-links.js` - Processes wiki-style internal links
 - `generate-topics.ts` - Creates topic index from content frontmatter  
-- `get-webmentions.js` - Fetches webmentions for posts
 
 ## Custom Components
 
