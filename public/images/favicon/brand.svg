@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Transparent canvas, balanced Ψ -->
+  <g stroke="#4FB1C4" stroke-width="88" stroke-linecap="round" stroke-linejoin="round">
+    <!-- central stem -->
+    <path d="M256 72 L256 432"/>
+    <!-- left arm -->
+    <path d="M256 150 C256 88 128 92 128 234 L128 312"/>
+    <!-- right arm -->
+    <path d="M256 150 C256 88 384 92 384 234 L384 312"/>
+    <!-- base footer -->
+    <path d="M180 432 L332 432"/>
+  </g>
+</svg>
