@@ -1,50 +1,15 @@
 ---
-import { getCollection, render } from "astro:content";
+import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
-import Title1 from "../components/mdx/typography/Title1.astro";
-import Title2 from "../components/mdx/typography/Title2.astro";
-import Title3 from "../components/mdx/typography/Title3.astro";
-import Title4 from "../components/mdx/typography/Title4.astro";
-import TooltipLink from "../components/mdx/TooltipLink.astro";
-import BasicImage from "../components/mdx/BasicImage.astro";
-import InternalTooltipLink from "../components/mdx/InternalTooltipLink.astro";
 import PageWrapper from "../components/layouts/PageWrapper.astro";
-import NowSection from "../components/layouts/NowSection.astro";
-import Footnote from "../components/mdx/Footnote.astro";
-import ResourceBook from "../components/mdx/ResourceBook.astro";
 import { Icon } from "astro-icon/components";
 import { siteConfig } from "../utils/siteConfig";
 const base = import.meta.env.BASE_URL;
 
-// Get all now entries and sort by date
-const nowEntries = await getCollection("now", ({ data }) => {
-	return data.draft !== true;
-});
-
-const sortedPosts = nowEntries.sort(
+const nowEntries = (await getCollection("now", ({ data }) => data.draft !== true)).sort(
 	(a, b) => new Date(b.data.startDate).getTime() - new Date(a.data.startDate).getTime(),
 );
-
-// Pre-render all entries
-const renderedPosts = await Promise.all(
-	sortedPosts.map(async (post) => {
-		const { Content } = await render(post);
-		return { Content, post };
-	}),
-);
-
-const components = {
-	h1: Title1,
-	h2: Title2,
-	h3: Title3,
-	h4: Title4,
-	a: TooltipLink,
-	img: BasicImage,
-	InternalTooltipLink,
-	Footnote,
-	ResourceBook,
-	BasicImage,
-};
+const recentNow = nowEntries.slice(0, 6);
 ---
 
 <Layout title={`Now | ${siteConfig.title}`}>
@@ -56,25 +21,96 @@ const components = {
 						<span> Back to Path </span>
 					</a>
 				</div>
-			<Title1>Now</Title1>
-			<Title2>
-				A sporadically updated log of what I'm reading, exploring, and thinking about
-			</Title2>
+			<h1 class="page-title">Now</h1>
+			<p class="tagline">
+				A living note on where my attention currently rests.
+			</p>
 		</header>
-		<main>
-			{
-				renderedPosts.map(({ Content, post }) => (
-						<NowSection>
-							<h3>
-								<a href={`${base}now-${post.id}`} class="post-title-link">
-									{post.data.title}
-								</a>
-							</h3>
-							<Content components={components} />
-						</NowSection>
-				))
-			}
-		</main>
+
+		<section class="now-hero">
+			<p class="lede">This is not louder. It is heavier.</p>
+			<div class="two-column">
+				<div>
+					<h2>Present</h2>
+					<p>
+						I am moving through a quieter phase, but not a softer one. There is less output, more
+						resistance. Fewer finished pieces. More time spent staying with things that do not resolve
+						quickly. I read without extracting. I play without recording. I write knowing most of it will
+						never leave the room.
+					</p>
+					<p class="accent">The work right now is internal. Letting ideas bruise before they become articulate. Letting silence do some of the shaping.</p>
+					<p>This is not absence. It is compression.</p>
+				</div>
+				<div class="pulse">
+					<h3>Work and thinking</h3>
+					<p>
+						My thinking sits in unstable territory. Between AI systems and the humans who have to live with
+						their consequences. Between language as a tool and language as a weapon. Between documentation
+						as control and documentation as care.
+					</p>
+					<p>
+						I am paying attention to how systems train us quietly. What they reward. What they flatten. What
+						they ask us to ignore.
+					</p>
+					<p>I am less interested in velocity and more interested in friction. The kind that forces honesty.</p>
+					<p>Some of this turns into writing. Some into structures. Much of it stays unresolved. That is intentional.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="now-grid">
+			<div class="block">
+				<h3>Music</h3>
+				<p>
+					Music has become the place where thinking turns physical. Guitar is where language fails first.
+					Repetition strips intention. Bad takes expose habits. Staying longer than is comfortable reveals what
+					is actually there.
+				</p>
+				<p class="accent">I trust this process more than explanation. Anything that survives it eventually becomes <strong>PoeticMayhem</strong>.</p>
+			</div>
+
+			<div class="block">
+				<h3>Reading and influence</h3>
+				<p>
+					I read slowly and unevenly. Mostly work that examines power, systems, cognition, and responsibility.
+					Occasionally fiction, when I need to feel something without needing to solve it.
+				</p>
+				<p>I do not collect books. I collect residues. What lingers shows up on my Shelf as a trace, not an endorsement.</p>
+			</div>
+
+			<div class="block">
+				<h3>What I am refusing right now</h3>
+				<p>I am not publishing for relevance. I am not optimizing for reach. I am not pretending clarity I have not earned.</p>
+				<p>There is value in waiting until something can withstand its own weight.</p>
+			</div>
+
+			<div class="block">
+				<h3>Updates</h3>
+				<p>This page changes only when something shifts internally. Not when something ships.</p>
+			</div>
+		</section>
+
+		{recentNow.length > 0 && (
+			<section class="recent">
+				<h3>Recent shifts</h3>
+				<ul>
+					{recentNow.map((post) => (
+						<li>
+							<a href={`${base}now-${post.id}`}>
+								<span class="date">
+									{post.data.startDate.toLocaleDateString("en-US", {
+										year: "numeric",
+										month: "short",
+										day: "numeric",
+									})}
+								</span>
+								<span class="title">{post.data.title}</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+		)}
 	</PageWrapper>
 </Layout>
 
@@ -84,15 +120,138 @@ const components = {
 		max-width: 800px;
 	}
 
-	main {
-		margin: 6rem auto var(--space-2xl);
-		max-width: 800px;
+	.page-title {
+		font-size: clamp(2.5rem, 4vw, 3.5rem);
+		margin: 0 0 var(--space-3xs);
 	}
 
-	.post-title-link {
+	.tagline {
+		font-size: var(--font-size-lg);
+		color: var(--color-gray-600);
+		margin: 0;
+	}
+
+	.now-hero {
+		margin: var(--space-2xl) auto;
+		padding: var(--space-xl);
+		border-radius: var(--border-radius-lg);
+		background: radial-gradient(circle at 20% 20%, rgba(66, 93, 118, 0.22), transparent 45%),
+			linear-gradient(135deg, #0f172a 0%, #0b1222 60%, #090f1c 100%);
+		color: #e8ecf2;
+		box-shadow: 0 24px 60px rgba(7, 14, 30, 0.45);
+	}
+
+	.lede {
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		font-size: var(--font-size-xs);
+		color: rgba(232, 236, 242, 0.72);
+		margin-bottom: var(--space-m);
+	}
+
+	.now-hero h2,
+	.now-hero h3 {
+		color: #f4f6fb;
+		margin-bottom: var(--space-xs);
+	}
+
+	.now-hero p {
+		color: rgba(232, 236, 242, 0.9);
+		line-height: 1.7;
+	}
+
+	.two-column {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: var(--space-l);
+		align-items: start;
+	}
+
+	.pulse {
+		border-left: 1px solid rgba(232, 236, 242, 0.2);
+		padding-left: var(--space-l);
+	}
+
+	.accent {
+		color: #9fb7ff;
+		font-weight: 600;
+	}
+
+	.now-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: var(--space-m);
+		margin: var(--space-2xl) 0 var(--space-xl);
+	}
+
+	.block {
+		border: 1px solid var(--color-gray-200);
+		border-radius: var(--border-radius-lg);
+		padding: var(--space-l);
+		background: linear-gradient(180deg, #f9fafc 0%, #ffffff 100%);
+		box-shadow: var(--box-shadow-xs);
+	}
+
+	.block h3 {
+		margin: 0 0 var(--space-xs);
+	}
+
+	.block p {
+		color: var(--color-gray-700);
+		line-height: 1.65;
+	}
+
+	.recent {
+		margin: var(--space-2xl) 0 var(--space-xl);
+	}
+
+	.recent h3 {
+		margin-bottom: var(--space-s);
+	}
+
+	.recent ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: var(--space-2xs);
+	}
+
+	.recent li {
+		border: 1px solid var(--color-gray-200);
+		border-radius: var(--border-radius-base);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		background: white;
+	}
+
+	.recent li:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--box-shadow-sm);
+	}
+
+	.recent a {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		padding: var(--space-m);
 		text-decoration: none;
-		color: inherit;
-		transition: color 0.2s ease;
+		color: var(--color-gray-900);
+		gap: var(--space-xs);
+	}
+
+	.recent .date {
+		font-family: var(--font-sans);
+		font-size: var(--font-size-xs);
+		color: var(--color-gray-500);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+	}
+
+	.recent .title {
+		font-weight: 600;
+		font-size: var(--font-size-sm);
+		text-align: right;
 	}
 
 	@media (max-width: 768px) {
@@ -100,8 +259,14 @@ const components = {
 			margin: var(--space-s) 0;
 			max-width: 100%;
 		}
-		main {
-			max-width: 100%;
+		.now-hero {
+			padding: var(--space-l);
+		}
+		.pulse {
+			border-left: none;
+			padding-left: 0;
+			border-top: 1px solid rgba(232, 236, 242, 0.2);
+			padding-top: var(--space-m);
 		}
 	}
 
