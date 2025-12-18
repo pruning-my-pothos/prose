@@ -120,26 +120,26 @@ const getDataForBacklinks = (fileNames, filePath) => {
 
 const getAllPostData = () => {
   // Get all content files
-  const essayFiles = getFilesFromDir(path.join(CONTENT_PATH, "essays"));
-  const noteFiles = getFilesFromDir(path.join(CONTENT_PATH, "notes"));
-  const patternFiles = getFilesFromDir(path.join(CONTENT_PATH, "patterns"));
-  const talkFiles = getFilesFromDir(path.join(CONTENT_PATH, "talks"));
+  const essayFiles = getFilesFromDir(path.join(CONTENT_PATH, "prose"));
+  const noteFiles = getFilesFromDir(path.join(CONTENT_PATH, "scratchpad"));
+  const patternFiles = getFilesFromDir(path.join(CONTENT_PATH, "riffs"));
+  const talkFiles = getFilesFromDir(path.join(CONTENT_PATH, "poeticmayhem"));
 
   const essaysData = getDataForBacklinks(
     essayFiles,
-    path.join(CONTENT_PATH, "essays"),
+    path.join(CONTENT_PATH, "prose"),
   );
   const notesData = getDataForBacklinks(
     noteFiles,
-    path.join(CONTENT_PATH, "notes"),
+    path.join(CONTENT_PATH, "scratchpad"),
   );
   const patternsData = getDataForBacklinks(
     patternFiles,
-    path.join(CONTENT_PATH, "patterns"),
+    path.join(CONTENT_PATH, "riffs"),
   );
   const talksData = getDataForBacklinks(
     talkFiles,
-    path.join(CONTENT_PATH, "talks"),
+    path.join(CONTENT_PATH, "poeticmayhem"),
   );
 
   return [...essaysData, ...notesData, ...patternsData, ...talksData];

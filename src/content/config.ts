@@ -3,7 +3,7 @@ import { glob } from "astro/loaders";
 import { file } from "astro/loaders";
 
 const notesCollection = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/notes" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/scratchpad" }),
   schema: () =>
     z.object({
       title: z.string(),
@@ -22,7 +22,7 @@ const notesCollection = defineCollection({
 });
 
 const essaysCollection = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/essays" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/prose" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -43,7 +43,7 @@ const essaysCollection = defineCollection({
 });
 
 const patternsCollection = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/patterns" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/riffs" }),
   schema: () =>
     z.object({
       title: z.string(),
@@ -61,7 +61,7 @@ const patternsCollection = defineCollection({
 });
 
 const talksCollection = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/talks" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/poeticmayhem" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -101,7 +101,7 @@ const podcastsCollection = defineCollection({
 });
 
 const booksCollection = defineCollection({
-  loader: file("src/content/books.json"),
+  loader: file("src/content/shelf.json"),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -114,7 +114,7 @@ const booksCollection = defineCollection({
 });
 
 const antibooksCollection = defineCollection({
-  loader: file("src/content/antibooks.json"),
+  loader: file("src/content/antithesis.json"),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -139,7 +139,7 @@ const nowCollection = defineCollection({
 });
 
 const smidgeonsCollection = defineCollection({
-  loader: glob({ pattern: "**/*.mdx", base: "./src/content/smidgeons" }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/sticky-notes" }),
   schema: () =>
     z.object({
       title: z.string(),
@@ -181,13 +181,13 @@ const pagesCollection = defineCollection({
 // This key should match your collection directory name in "src/content"
 export const collections = {
   now: nowCollection,
-  notes: notesCollection,
-  essays: essaysCollection,
-  patterns: patternsCollection,
-  talks: talksCollection,
+  scratchpad: notesCollection,
+  prose: essaysCollection,
+  riffs: patternsCollection,
+  poeticmayhem: talksCollection,
   podcasts: podcastsCollection,
-  books: booksCollection,
-  antibooks: antibooksCollection,
-  smidgeons: smidgeonsCollection,
+  shelf: booksCollection,
+  antithesis: antibooksCollection,
+  "sticky-notes": smidgeonsCollection,
   pages: pagesCollection,
 };

@@ -12,7 +12,7 @@ import { siteConfig } from "../utils/siteConfig";
 const base = import.meta.env.BASE_URL;
 
 // Get all essays that aren't drafts
-const essays = await getCollection("essays", ({ data }) => !data.draft);
+const essays = await getCollection("prose", ({ data }) => !data.draft);
 
 // Sort essays by date
 const sortedEssays = essays.sort(

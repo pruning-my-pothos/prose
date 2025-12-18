@@ -8,11 +8,11 @@ import { extractBaseSlug, getLatestVersion, getAllVersionsForPost } from "../../
 
 export async function getStaticPaths() {
   const [essays, notes, talks, patterns, smidgeons, nowPages] = await Promise.all([
-    getCollection("essays"),
-    getCollection("notes"),
-    getCollection("talks"),
-    getCollection("patterns"),
-    getCollection("smidgeons"),
+    getCollection("prose"),
+    getCollection("scratchpad"),
+    getCollection("poeticmayhem"),
+    getCollection("riffs"),
+    getCollection("sticky-notes"),
     getCollection("now"),
   ]);
 

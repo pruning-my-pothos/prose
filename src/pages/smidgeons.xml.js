@@ -35,7 +35,7 @@ function stripMDXComponents(text) {
 }
 
 export async function GET(context) {
-  const smidgeons = await getCollection("smidgeons", ({ data }) => !data.draft);
+  const smidgeons = await getCollection("sticky-notes", ({ data }) => !data.draft);
 
   return rss({
     title: siteConfig.rssTitle,

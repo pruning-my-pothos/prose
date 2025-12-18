@@ -16,10 +16,10 @@ import { extractBaseSlug } from "../utils/versionUtils";
 import { siteConfig } from "../utils/siteConfig";
 const base = import.meta.env.BASE_URL;
 
-const essays = await getCollection("essays", ({ data }) => data.featured === true && !data.draft);
-const notes = await getCollection("notes", ({ data }) => !data.draft);
-const patterns = await getCollection("patterns", ({ data }) => !data.draft);
-const books = await getCollection("books");
+const essays = await getCollection("prose", ({ data }) => data.featured === true && !data.draft);
+const notes = await getCollection("scratchpad", ({ data }) => !data.draft);
+const patterns = await getCollection("riffs", ({ data }) => !data.draft);
+const books = await getCollection("shelf");
 
 const sortedEssays = essays
 	.slice(0, 4)

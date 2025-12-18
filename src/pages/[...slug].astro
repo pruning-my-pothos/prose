@@ -21,7 +21,7 @@ import BasicImage from "../components/mdx/BasicImage.astro";
 import Spacer from "../components/mdx/Spacer.astro";
 
 type ContentType = "essay" | "note" | "pattern" | "talk" | "smidgeon";
-type Collections = "essays" | "notes" | "patterns" | "talks" | "smidgeons";
+type Collections = "prose" | "scratchpad" | "riffs" | "poeticmayhem" | "sticky-notes";
 
 // Add type definitions for different frontmatter types
 type BaseFrontmatter = {
@@ -41,11 +41,11 @@ interface Props {
 
 // Get params from URL
 export async function getStaticPaths() {
-	const essays = await getCollection("essays");
-	const notes = await getCollection("notes");
-	const patterns = await getCollection("patterns");
-	const talks = await getCollection("talks");
-	const smidgeons = await getCollection("smidgeons");
+	const essays = await getCollection("prose");
+	const notes = await getCollection("scratchpad");
+	const patterns = await getCollection("riffs");
+	const talks = await getCollection("poeticmayhem");
+	const smidgeons = await getCollection("sticky-notes");
 
 	// Generate versioned paths for content that supports versioning
 	const versionedEssayPaths = generateVersionedPaths(essays).map(({ slug, entry }) => ({

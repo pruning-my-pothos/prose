@@ -49,7 +49,7 @@ type: "smidgeon"
     "..",
     "src",
     "content",
-    "smidgeons",
+    "sticky-notes",
     year.toString(),
   );
   await fs.mkdir(yearDir, { recursive: true });

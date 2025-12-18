@@ -6,10 +6,10 @@ import { getCollection } from "astro:content";
 import RelativeDate from "./RelativeDate.astro";
 
 type VersionedContent =
-	| CollectionEntry<"essays">
-	| CollectionEntry<"notes">
-	| CollectionEntry<"patterns">
-	| CollectionEntry<"talks">;
+	| CollectionEntry<"prose">
+	| CollectionEntry<"scratchpad">
+	| CollectionEntry<"riffs">
+	| CollectionEntry<"poeticmayhem">;
 
 interface Props {
 	entry: VersionedContent;
@@ -20,17 +20,17 @@ const { entry } = Astro.props;
 // Get all entries of the same collection type to find versions
 let allEntries: VersionedContent[] = [];
 switch (entry.collection) {
-	case "essays":
-		allEntries = (await getCollection("essays")) as VersionedContent[];
+	case "prose":
+		allEntries = (await getCollection("prose")) as VersionedContent[];
 		break;
-	case "notes":
-		allEntries = (await getCollection("notes")) as VersionedContent[];
+	case "scratchpad":
+		allEntries = (await getCollection("scratchpad")) as VersionedContent[];
 		break;
-	case "patterns":
-		allEntries = (await getCollection("patterns")) as VersionedContent[];
+	case "riffs":
+		allEntries = (await getCollection("riffs")) as VersionedContent[];
 		break;
-	case "talks":
-		allEntries = (await getCollection("talks")) as VersionedContent[];
+	case "poeticmayhem":
+		allEntries = (await getCollection("poeticmayhem")) as VersionedContent[];
 		break;
 }
 

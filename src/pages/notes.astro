@@ -12,7 +12,7 @@ import { siteConfig } from "../utils/siteConfig";
 const base = import.meta.env.BASE_URL;
 
 // Get all notes that aren't drafts
-const notes = await getCollection("notes", ({ data }) => !data.draft);
+const notes = await getCollection("scratchpad", ({ data }) => !data.draft);
 
 // Sort notes by date
 const sortedNotes = notes.sort(

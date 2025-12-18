@@ -12,7 +12,7 @@ import { siteConfig } from "../utils/siteConfig";
 const base = import.meta.env.BASE_URL;
 
 // Get all patterns that aren't drafts
-const patterns = await getCollection("patterns", ({ data }) => !data.draft);
+const patterns = await getCollection("riffs", ({ data }) => !data.draft);
 
 // Sort patterns by date
 const sortedPatterns = patterns.sort(

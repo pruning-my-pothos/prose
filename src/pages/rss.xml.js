@@ -64,11 +64,11 @@ function stripMDXComponents(text, siteUrl) {
 }
 
 export async function GET(context) {
-  const notes = await getCollection("notes", ({ data }) => !data.draft);
-  const essays = await getCollection("essays", ({ data }) => !data.draft);
-  const talks = await getCollection("talks", ({ data }) => !data.draft);
-  const patterns = await getCollection("patterns", ({ data }) => !data.draft);
-  const smidgeons = await getCollection("smidgeons", ({ data }) => !data.draft);
+  const notes = await getCollection("scratchpad", ({ data }) => !data.draft);
+  const essays = await getCollection("prose", ({ data }) => !data.draft);
+  const talks = await getCollection("poeticmayhem", ({ data }) => !data.draft);
+  const patterns = await getCollection("riffs", ({ data }) => !data.draft);
+  const smidgeons = await getCollection("sticky-notes", ({ data }) => !data.draft);
   const now = await getCollection("now", ({ data }) => !data.draft);
 
   return rss({

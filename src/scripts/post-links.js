@@ -2,10 +2,11 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-const ESSAYS_PATH = path.join(process.cwd(), "posts", "essays");
-const NOTES_PATH = path.join(process.cwd(), "posts", "notes");
-const PATTERNS_PATH = path.join(process.cwd(), "posts", "patterns");
-const TALKS_PATH = path.join(process.cwd(), "posts", "talks");
+const CONTENT_PATH = path.join(process.cwd(), "src", "content");
+const ESSAYS_PATH = path.join(CONTENT_PATH, "prose");
+const NOTES_PATH = path.join(CONTENT_PATH, "scratchpad");
+const PATTERNS_PATH = path.join(CONTENT_PATH, "riffs");
+const TALKS_PATH = path.join(CONTENT_PATH, "poeticmayhem");
 
 // Extract all instances of substrings between double brackets [[]] from a long string
 const bracketsExtractor = (str) => {

@@ -10,11 +10,11 @@ if (import.meta.env.PROD) {
 	return Astro.redirect("/404");
 }
 
-const essays = await getCollection("essays", ({ data }) => data.draft === true);
-const notes = await getCollection("notes", ({ data }) => data.draft === true);
-const patterns = await getCollection("patterns", ({ data }) => data.draft === true);
-const talks = await getCollection("talks", ({ data }) => data.draft === true);
-const smidgeons = await getCollection("smidgeons", ({ data }) => data.draft === true);
+const essays = await getCollection("prose", ({ data }) => data.draft === true);
+const notes = await getCollection("scratchpad", ({ data }) => data.draft === true);
+const patterns = await getCollection("riffs", ({ data }) => data.draft === true);
+const talks = await getCollection("poeticmayhem", ({ data }) => data.draft === true);
+const smidgeons = await getCollection("sticky-notes", ({ data }) => data.draft === true);
 const now = await getCollection("now", ({ data }) => data.draft === true);
 
 const totalDrafts =

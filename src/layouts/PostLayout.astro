@@ -19,16 +19,16 @@ const base = import.meta.env.BASE_URL;
 
 type Props = {
 	frontmatter:
-		| CollectionEntry<"essays">["data"]
-		| CollectionEntry<"notes">["data"]
-		| CollectionEntry<"patterns">["data"]
-		| CollectionEntry<"talks">["data"];
+		| CollectionEntry<"prose">["data"]
+		| CollectionEntry<"scratchpad">["data"]
+		| CollectionEntry<"riffs">["data"]
+		| CollectionEntry<"poeticmayhem">["data"];
 	headings: MarkdownHeading[];
 	entry?:
-		| CollectionEntry<"essays">
-		| CollectionEntry<"notes">
-		| CollectionEntry<"patterns">
-		| CollectionEntry<"talks">;
+		| CollectionEntry<"prose">
+		| CollectionEntry<"scratchpad">
+		| CollectionEntry<"riffs">
+		| CollectionEntry<"poeticmayhem">;
 };
 
 const { frontmatter, entry } = Astro.props;
@@ -50,17 +50,17 @@ if (entry) {
 	// Get all entries of the same collection type to find canonical dates
 	let allEntries: (typeof entry)[] = [];
 	switch (entry.collection) {
-		case "essays":
-			allEntries = (await getCollection("essays")) as (typeof entry)[];
+		case "prose":
+			allEntries = (await getCollection("prose")) as (typeof entry)[];
 			break;
-		case "notes":
-			allEntries = (await getCollection("notes")) as (typeof entry)[];
+		case "scratchpad":
+			allEntries = (await getCollection("scratchpad")) as (typeof entry)[];
 			break;
-		case "patterns":
-			allEntries = (await getCollection("patterns")) as (typeof entry)[];
+		case "riffs":
+			allEntries = (await getCollection("riffs")) as (typeof entry)[];
 			break;
-		case "talks":
-			allEntries = (await getCollection("talks")) as (typeof entry)[];
+		case "poeticmayhem":
+			allEntries = (await getCollection("poeticmayhem")) as (typeof entry)[];
 			break;
 	}
 	const versionedDates = getCanonicalDates(entry, allEntries);

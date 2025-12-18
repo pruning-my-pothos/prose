@@ -6,11 +6,11 @@ import matter from "gray-matter";
 async function generateTopics() {
   // Get all MDX files from content directories
   const contentDirs = [
-    "src/content/essays",
-    "src/content/notes",
-    "src/content/patterns",
-    "src/content/talks",
-    "src/content/smidgeons",
+    "src/content/prose",
+    "src/content/scratchpad",
+    "src/content/riffs",
+    "src/content/poeticmayhem",
+    "src/content/sticky-notes",
   ];
 
   const mdxFiles = await globby(contentDirs.map((dir) => `${dir}/**/*.mdx`));

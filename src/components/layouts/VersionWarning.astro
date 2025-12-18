@@ -5,10 +5,10 @@ import { getVersionInfo, hasMultipleVersions, getLatestVersion } from "../../uti
 import { getCollection } from "astro:content";
 
 type VersionedContent =
-	| CollectionEntry<"essays">
-	| CollectionEntry<"notes">
-	| CollectionEntry<"patterns">
-	| CollectionEntry<"talks">;
+	| CollectionEntry<"prose">
+	| CollectionEntry<"scratchpad">
+	| CollectionEntry<"riffs">
+	| CollectionEntry<"poeticmayhem">;
 
 interface Props {
 	entry: VersionedContent;
@@ -19,17 +19,17 @@ const { entry } = Astro.props;
 // Get all entries of the same collection type to find versions
 let allEntries: VersionedContent[] = [];
 switch (entry.collection) {
-	case "essays":
-		allEntries = (await getCollection("essays")) as VersionedContent[];
+	case "prose":
+		allEntries = (await getCollection("prose")) as VersionedContent[];
 		break;
-	case "notes":
-		allEntries = (await getCollection("notes")) as VersionedContent[];
+	case "scratchpad":
+		allEntries = (await getCollection("scratchpad")) as VersionedContent[];
 		break;
-	case "patterns":
-		allEntries = (await getCollection("patterns")) as VersionedContent[];
+	case "riffs":
+		allEntries = (await getCollection("riffs")) as VersionedContent[];
 		break;
-	case "talks":
-		allEntries = (await getCollection("talks")) as VersionedContent[];
+	case "poeticmayhem":
+		allEntries = (await getCollection("poeticmayhem")) as VersionedContent[];
 		break;
 }
 
@@ -38,6 +38,17 @@ const multipleVersions = hasMultipleVersions(versionInfo.baseSlug, allEntries);
 
 const latestUrl = `/${versionInfo.baseSlug}`;
 const isArchived = !versionInfo.isLatest;
+
+const collectionLabel =
+	entry.collection === "prose"
+		? "prose piece"
+		: entry.collection === "scratchpad"
+			? "scratchpad entry"
+			: entry.collection === "riffs"
+				? "riff"
+				: entry.collection === "poeticmayhem"
+					? "PoeticMayhem set"
+					: "post";
 
 // Helper function to format dates consistently
 function formatDate(date: string | Date | undefined): string {
@@ -64,7 +75,7 @@ const latestUpdatedDate = formatDate(latestVersion.data.updated);
 				<Icon name="lucide:history" size={20} class="warning-icon" />
 
 				<span class="message-text">
-					You're reading version {versionInfo.version} of this {entry.collection.slice(0, -1)}. The
+					You're reading version {versionInfo.version} of this {collectionLabel}. The
 					latest version (v{latestVersionNumber}) was published on {latestUpdatedDate}.
 				</span>
 			</div>

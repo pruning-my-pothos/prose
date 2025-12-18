@@ -18,7 +18,7 @@ import talks5 from "../images/general/talks_5.webp";
 const base = import.meta.env.BASE_URL;
 
 // Get all talks that aren't drafts
-const talks = await getCollection("talks", ({ data }) => !data.draft);
+const talks = await getCollection("poeticmayhem", ({ data }) => !data.draft);
 
 // Sort talks by date
 const sortedTalks = talks.sort(

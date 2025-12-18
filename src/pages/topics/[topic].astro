@@ -20,13 +20,13 @@ import { extractBaseSlug } from "../../utils/versionUtils";
 const base = import.meta.env.BASE_URL;
 
 type Post =
-	| CollectionEntry<"essays">
-	| CollectionEntry<"notes">
-	| CollectionEntry<"patterns">
-	| CollectionEntry<"talks">
+	| CollectionEntry<"prose">
+	| CollectionEntry<"scratchpad">
+	| CollectionEntry<"riffs">
+	| CollectionEntry<"poeticmayhem">
 	| CollectionEntry<"podcasts">
 	| CollectionEntry<"now">
-	| CollectionEntry<"smidgeons">;
+	| CollectionEntry<"sticky-notes">;
 
 export async function getStaticPaths() {
 	const topics = await getAllTopics();
@@ -43,9 +43,13 @@ const posts = await getPostsForTopic(topic);
 // Sort posts by date (using updated field for most collections, startDate for now posts and smidgeons)
 const sortedPosts = posts.sort((a, b) => {
 	const dateA =
-		a.collection === "now" || a.collection === "smidgeons" ? a.data.startDate : a.data.updated;
+		a.collection === "now" || a.collection === "sticky-notes"
+			? a.data.startDate
+			: a.data.updated;
 	const dateB =
-		b.collection === "now" || b.collection === "smidgeons" ? b.data.startDate : b.data.updated;
+		b.collection === "now" || b.collection === "sticky-notes"
+			? b.data.startDate
+			: b.data.updated;
 	return new Date(dateB).getTime() - new Date(dateA).getTime();
 });
 ---
@@ -71,7 +75,7 @@ const sortedPosts = posts.sort((a, b) => {
 			<div class="grid-sizer"></div>
 			{
 				sortedPosts.map((post: Post) => {
-					if (post.collection === "essays") {
+					if (post.collection === "prose") {
 						return (
 							<div class="grid-item">
 								<EssayCard
@@ -86,7 +90,7 @@ const sortedPosts = posts.sort((a, b) => {
 							</div>
 						);
 					}
-					if (post.collection === "notes") {
+					if (post.collection === "scratchpad") {
 						return (
 							<div class="grid-item">
 								<NoteCard
@@ -100,7 +104,7 @@ const sortedPosts = posts.sort((a, b) => {
 							</div>
 						);
 					}
-					if (post.collection === "patterns") {
+					if (post.collection === "riffs") {
 						return (
 							<div class="grid-item">
 								<PatternCard
@@ -114,7 +118,7 @@ const sortedPosts = posts.sort((a, b) => {
 							</div>
 						);
 					}
-					if (post.collection === "talks") {
+					if (post.collection === "poeticmayhem") {
 						return (
 							<div class="grid-item">
 								<TalkCard
@@ -155,7 +159,7 @@ const sortedPosts = posts.sort((a, b) => {
 							</div>
 						);
 					}
-					if (post.collection === "smidgeons") {
+					if (post.collection === "sticky-notes") {
 						// Generate preview for smidgeons - extract from body content
 						const preview = extractPreview(post.body || "");
 
