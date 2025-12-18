@@ -5,6 +5,7 @@ import Layout from "../layouts/Layout.astro";
 import Spacer from "../components/mdx/Spacer.astro";
 import Title1 from "../components/mdx/typography/Title1.astro";
 import SmallTitle2 from "../components/mdx/typography/SmallTitle2.astro";
+import Highlight from "../components/mdx/typography/Highlight.astro";
 import EssayCard from "../components/cards/EssayCard.astro";
 import BookCard from "../components/cards/BookCard.astro";
 import PatternCard from "../components/cards/PatternCard.astro";
@@ -37,7 +38,9 @@ const sortedPatterns = patterns
 	<PageWrapper>
 		<header class="page-header">
 			<Title1 class="main-title">
-				Pruning My Pothos is a practice journal on pruning, adaptation, and quietly resilient growth.
+				Pruning My Pothos is a <Highlight>practice</Highlight> journal on
+				<Highlight>pruning</Highlight>, adaptation, and
+				<Highlight>quiet resilience across work and life</Highlight>.
 			</Title1>
 			<SmallTitle2>
 				Letting go isn’t just a choice — it’s part of growth. I write about AI integration and enablement,
