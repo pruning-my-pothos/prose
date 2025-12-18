@@ -56,7 +56,7 @@ const renderedSmidgeons = await Promise.all(
 );
 ---
 
-<Layout title={`Smidgeons Stream | ${siteConfig.title}`}>
+<Layout title={`Sticky Notes Stream | ${siteConfig.title}`}>
 	<PageWrapper>
 		<header class="header">
 			<TitleWithCount posts={smidgeons}>
@@ -66,11 +66,10 @@ const renderedSmidgeons = await Promise.all(
 						<span> Back to Path </span>
 					</a>
 				</div>
-				Smidgeons Stream
+				Sticky Notes Stream
 			</TitleWithCount>
 			<Title2>
-				A stream of interesting links, papers, and tiny thoughts. Roughly what I'm reading and
-				thinking about at the moment.</Title2
+				Short, sharp, lightweight thoughts. Roughly what I'm reading and thinking about right now.</Title2
 			>
 		</header>
 
@@ -162,7 +161,7 @@ const renderedSmidgeons = await Promise.all(
 			</div>
 			<aside class="sidebar">
 				<div class="recent-smidgeons">
-					<h3>Recent Smidgeons</h3>
+					<h3>Recent Sticky Notes</h3>
 					<ul>
 						{
 							renderedSmidgeons.slice(0, 8).map((recentSmidgeon) => (
@@ -178,9 +177,9 @@ const renderedSmidgeons = await Promise.all(
 					</ul>
 				</div>
 				<div class="rss-link">
-					<a href={`${base}smidgeons.xml`} title="RSS Feed for Smidgeons">
+					<a href={`${base}smidgeons.xml`} title="RSS Feed for Sticky Notes">
 						<Icon name="heroicons:rss" size={14} />
-						<span>Smidgeons RSS Feed</span>
+						<span>Sticky Notes RSS Feed</span>
 					</a>
 				</div>
 			</aside>

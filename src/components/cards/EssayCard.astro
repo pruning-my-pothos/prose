@@ -25,7 +25,7 @@ const base = import.meta.env.BASE_URL;
 		<h3 transition:name={`title-${slug}`}>{title}</h3>
 		<p class="description">{description}</p>
 		<div class="metadata-container">
-			{growthStage && <span>Essay</span>}
+			{growthStage && <span>Prose</span>}
 			{growthStage && <GrowthIcon size="15" growthStage={growthStage} />}
 			<span>
 				<RelativeDate postDate={date} />

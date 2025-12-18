@@ -83,25 +83,25 @@
 
   /* Colors */
   --color-light-cream: #ffffff;
-  --color-cream: #f7f8fb;
-  --color-tinted-cream: #e8ecf3;
-  --color-black: #111827;
-  --color-gray-800: #1f2937;
-  --color-gray-600: #4b5563;
-  --color-gray-500: #6b7280;
-  --color-gray-400: #9ca3af;
-  --color-gray-300: #d1d5db;
-  --color-gray-200: #e5e7eb;
-  --color-gray-100: #f1f3f6;
-  --color-bright-crimson: #0f766e;
-  --color-crimson: #0d4e56;
-  --color-sea-blue: #2563eb;
-  --color-medium-sea-blue: #1d4ed8;
-  --color-dark-sea-blue: #0f3f8a;
-  --color-purple: #475569;
-  --color-salmon: #cbd5e1;
-  --color-light-salmon: #e2e8f0;
-  --color-dark-salmon: #94a3b8;
+  --color-cream: #f8fafc;
+  --color-tinted-cream: #e6ebf3;
+  --color-black: #0f172a;
+  --color-gray-800: #1e2533;
+  --color-gray-600: #414b5c;
+  --color-gray-500: #5a6475;
+  --color-gray-400: #9aa3b5;
+  --color-gray-300: #d5d9e2;
+  --color-gray-200: #e9edf3;
+  --color-gray-100: #f4f7fb;
+  --color-bright-crimson: #0b6efc;
+  --color-crimson: #0a4fc7;
+  --color-sea-blue: #0f7bff;
+  --color-medium-sea-blue: #0d63d5;
+  --color-dark-sea-blue: #0a3a8f;
+  --color-purple: #4f5668;
+  --color-salmon: #cfd6e3;
+  --color-light-salmon: #e6ebf5;
+  --color-dark-salmon: #a5b1c7;
 
   /* Opacity variants for colors */
   /* Crimson variants */

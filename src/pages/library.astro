@@ -11,16 +11,16 @@ const base = import.meta.env.BASE_URL;
 const books = await getCollection("books");
 ---
 
-<Layout title={`Library | ${siteConfig.title}`}>
+<Layout title={`Shelf | ${siteConfig.title}`}>
 	<PageWrapper>
 		<header style="margin-bottom: var(--space-2xl);">
 			<TitleWithCount posts={books}>
-				Library
+				Shelf
 				<div style="color: var(--color-gray-300); display: inline-block">|</div>
-				<a href={`${base}antilibrary`} class="styled-link">Antilibrary</a>
+				<a href={`${base}antilibrary`} class="styled-link">Antithesis</a>
 			</TitleWithCount>
 			<Title2
-				>Books I've read that significantly influenced how I see the world.</Title2
+				>Books and music I return to and recommend.</Title2
 			>
 		</header>
 		<section class="bookshelf-grid">

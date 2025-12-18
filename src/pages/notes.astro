@@ -21,7 +21,7 @@ const sortedNotes = notes.sort(
 );
 ---
 
-<Layout title={`Notes | ${siteConfig.title}`}>
+<Layout title={`Scratchpad | ${siteConfig.title}`}>
 	<PageWrapper>
 		<header style="margin-bottom: var(--space-xl);">
 			<TitleWithCount posts={sortedNotes}>
@@ -31,10 +31,10 @@ const sortedNotes = notes.sort(
 						<span> Back to Path </span>
 					</a>
 				</div>
-				Notes
+				Scratchpad
 			</TitleWithCount>
 			<Title2
-				>Loose, unopinionated notes on things I don't entirely understand yet.</Title2
+				>Working thoughts and in-progress ideas.</Title2
 			>
 		</header>
 		<MasonryGrid>

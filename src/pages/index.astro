@@ -87,7 +87,7 @@ const sortedPatterns = patterns
 				<h2 class="garden-title">The Path</h2>
 			</a>
 			<div class="subheader">
-				This path is a living set of notes, essays, and patterns that sprawl and get pruned over time.{" "}
+				This path is a living set of scratchpad entries, prose, and riffs that sprawl and get pruned over time.{" "}
 				It orbits AI integration, techno-functional translation, and the quieter practice of growth.{" "}
 				<a href={`${base}garden-history`} class="readmore-link">
 					Learn more
@@ -100,11 +100,11 @@ const sortedPatterns = patterns
 			<section class="essays-section">
 				<a href={`${base}essays`} class="header-link">
 					<h3 class="section-header">
-						Essays
+						Prose
 						<Icon name="heroicons:arrow-right" size={18} />
 					</h3>
 				</a>
-				<div class="subheader">Opinionated, longform narrative writing with an agenda</div>
+				<div class="subheader">Long-form, deliberate writing</div>
 				<div class="essays-grid">
 					{
 						sortedEssays.map((essay) => (
@@ -125,12 +125,12 @@ const sortedPatterns = patterns
 			<section style="grid-area: notes;">
 				<a href={`${base}notes`} class="header-link">
 					<h3 class="section-header">
-						Notes
+						Scratchpad
 						<Icon name="heroicons:arrow-right" size={18} />
 					</h3>
 				</a>
 				<div class="subheader">
-					Loose, unopinionated notes on things I don't entirely understand yet.
+					Working thoughts and in-progress ideas.
 				</div>
 				{
 					sortedNotes.slice(0, 12).map((note) => (
@@ -153,11 +153,11 @@ const sortedPatterns = patterns
 			<section class="patterns-section">
 				<a href={`${base}patterns`} class="header-link">
 					<h3 class="section-header">
-						Patterns
+						Riffs
 						<Icon name="heroicons:arrow-right" size={18} />
 					</h3>
 				</a>
-				<div class="subheader">Design patterns gathered from my own observations and research.</div>
+				<div class="subheader">Repeatable ideas, motifs, and frameworks.</div>
 				<div class="patterns-grid">
 					{
 						sortedPatterns.map((pattern) => (
@@ -176,11 +176,11 @@ const sortedPatterns = patterns
 			<section class="library-section">
 				<a href={`${base}library`} class="header-link">
 					<h3 class="section-header">
-						Library
+						Shelf
 						<Icon name="heroicons:arrow-right" size={18} />
 					</h3>
 				</a>
-				<div class="subheader">Books I've read and books I like the idea of having read.</div>
+				<div class="subheader">Books and music I recommend or return to.</div>
 				<div class="books-grid">
 					{
 						books
