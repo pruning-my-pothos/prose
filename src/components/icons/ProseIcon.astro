@@ -1,0 +1,21 @@
+---
+const { size = 22, class: className = "", ...props } = Astro.props;
+---
+
+<svg
+	class={`nav-animated-icon ${className}`.trim()}
+	width={size}
+	height={size}
+	viewBox="0 0 64 64"
+	fill="none"
+	stroke="currentColor"
+	stroke-width="2.8"
+	stroke-linecap="round"
+	stroke-linejoin="round"
+	{...props}
+>
+	<path d="M14 46 50 10" />
+	<path d="M44 8 56 20" />
+	<path d="M14 46 12 56 22 54 50 26" />
+	<path d="M26 38 34 46" />
+</svg>

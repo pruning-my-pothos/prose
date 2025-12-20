@@ -1,6 +1,14 @@
 ---
-import { Icon } from "astro-icon/components";
 import UnderlineHoverLink from "../../mdx/UnderlineHoverLink.astro";
+import ProseIcon from "../../icons/ProseIcon.astro";
+import ScratchpadIcon from "../../icons/ScratchpadIcon.astro";
+import RiffsIcon from "../../icons/RiffsIcon.astro";
+import StickyNotesIcon from "../../icons/StickyNotesIcon.astro";
+import PoeticMayhemIcon from "../../icons/PoeticMayhemIcon.astro";
+import PodcastsIcon from "../../icons/PodcastsIcon.astro";
+import ShelfIcon from "../../icons/ShelfIcon.astro";
+import AntithesisIcon from "../../icons/AntithesisIcon.astro";
+import { Icon } from "astro-icon/components";
 const base = import.meta.env.BASE_URL;
 ---
 
@@ -22,7 +30,7 @@ const base = import.meta.env.BASE_URL;
 			<div class="megamenu-grid">
 				<a href={`${base}essays`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:document-text" size={20} class="megamenu-icon" />
+						<ProseIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">Prose</h3>
 							<p class="megamenu-description">
@@ -33,7 +41,7 @@ const base = import.meta.env.BASE_URL;
 				</a>
 				<a href={`${base}notes`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:pencil-square" size={20} class="megamenu-icon" />
+						<ScratchpadIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">Scratchpad</h3>
 							<p class="megamenu-description">
@@ -44,7 +52,7 @@ const base = import.meta.env.BASE_URL;
 				</a>
 				<a href={`${base}patterns`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:bolt" size={20} class="megamenu-icon" />
+						<RiffsIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">Riffs</h3>
 							<p class="megamenu-description">
@@ -55,7 +63,7 @@ const base = import.meta.env.BASE_URL;
 				</a>
 				<a href={`${base}smidgeons`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:bookmark-square" size={20} class="megamenu-icon" />
+						<StickyNotesIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">Sticky Notes</h3>
 							<p class="megamenu-description">Short, sharp, lightweight thoughts</p>
@@ -64,7 +72,7 @@ const base = import.meta.env.BASE_URL;
 				</a>
 				<a href={`${base}talks`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:musical-note" size={20} class="megamenu-icon" />
+						<PoeticMayhemIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">PoeticMayhem</h3>
 							<p class="megamenu-description">Music, performances, and philosophical riffs</p>
@@ -73,7 +81,7 @@ const base = import.meta.env.BASE_URL;
 				</a>
 				<a href={`${base}podcasts`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:microphone" size={20} class="megamenu-icon" />
+						<PodcastsIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">Podcasts</h3>
 							<p class="megamenu-description">Podcast episodes I've been a guest on</p>
@@ -82,7 +90,7 @@ const base = import.meta.env.BASE_URL;
 				</a>
 				<a href={`${base}library`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:book-open" size={20} class="megamenu-icon" />
+						<ShelfIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">Shelf</h3>
 							<p class="megamenu-description">Books and music I return to</p>
@@ -91,7 +99,7 @@ const base = import.meta.env.BASE_URL;
 				</a>
 				<a href={`${base}antilibrary`} role="listitem" class="megamenu-item">
 					<div class="megamenu-item-content">
-						<Icon name="heroicons:arrows-right-left" size={20} class="megamenu-icon" />
+						<AntithesisIcon size={22} />
 						<div class="megamenu-text">
 							<h3 class="megamenu-title">Antithesis</h3>
 							<p class="megamenu-description">Contradictions and critical dissections</p>
@@ -426,30 +434,19 @@ const base = import.meta.env.BASE_URL;
 		color: var(--color-gray-800);
 	}
 
-	.megamenu-item:hover .megamenu-icon {
-		color: var(--color-crimson);
-		transform: scale(1.1);
-	}
-
-	/* Pattern card leaf animations for the patterns menu item */
-	.megamenu-item:hover :global(.left-leaf) {
-		transform: translateX(29px);
-		transition: transform 0.3s ease-in-out;
-	}
-
-	.megamenu-item:hover :global(.right-leaf) {
-		transform: translateX(-29px);
-		transition: transform 0.3s ease-in-out;
-	}
-
-	:global(.left-leaf) {
-		transition: transform 0.3s ease-in-out;
+	/* Icon micro-animation */
+	.nav-animated-icon {
+		color: var(--color-sea-blue);
+		transition:
+			transform 0.2s ease,
+			color 0.2s ease,
+			stroke 0.2s ease;
 		will-change: transform;
 	}
 
-	:global(.right-leaf) {
-		transition: transform 0.3s ease-in-out;
-		will-change: transform;
+	.megamenu-item:hover .nav-animated-icon {
+		transform: translateY(-1px) scale(1.05);
+		color: var(--color-sea-blue);
 	}
 
 	.outside-dropdown :global(.link-container) {
