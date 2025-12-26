@@ -74,19 +74,20 @@ const base = import.meta.env.BASE_URL;
 	}
 
 	.social-media-icons [data-icon] {
-		color: var(--color-gray-400);
+		color: var(--color-gray-500);
 		transition: all 0.3s ease-in-out;
 	}
 
 	.social-media-icons a:hover [data-icon] {
-		color: var(--color-bright-crimson);
+		color: var(--color-crimson);
 	}
 
 	.rss-feed h3 {
 		font-size: var(--font-size-md);
 		font-family: var(--font-body);
-		font-weight: 300;
+		font-weight: 500;
 		margin-bottom: var(--space-xs);
+		color: var(--color-gray-800);
 	}
 
 	.rss-feed button {
@@ -95,21 +96,23 @@ const base = import.meta.env.BASE_URL;
 		align-items: center;
 		gap: var(--space-3xs);
 		padding: var(--space-3xs) 1.2rem;
-		background: none;
-		border: 1px solid var(--color-tinted-cream);
-		border-radius: 3rem;
+		background: var(--color-light-cream);
+		border: 1px solid var(--color-crimson);
+		border-radius: 999px;
 		font-family: var(--font-sans);
 		font-size: var(--font-size-sm);
-		font-weight: 400;
-		color: var(--color-gray-600);
-		transition: all 0.3s ease-in-out;
+		font-weight: 600;
+		color: var(--color-crimson);
+		box-shadow: var(--box-shadow-sm);
+		transition: all 0.2s ease-in-out;
 	}
 
 	.rss-feed button:hover {
 		cursor: pointer;
-		color: var(--color-crimson);
+		color: var(--color-light-cream);
+		background: var(--color-crimson);
 		border: 1px solid var(--color-crimson);
-		box-shadow: var(--box-shadow-sm);
+		box-shadow: var(--box-shadow-md);
 	}
 
 	.rss-feed .copyright {
@@ -137,9 +140,10 @@ const base = import.meta.env.BASE_URL;
 	.footer-content {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
-		max-width: 1400px;
-		margin: var(--space-m) auto;
-		padding: 0 var(--space-l);
+		max-width: 1200px;
+		margin: var(--space-xl) auto;
+		padding: 0 var(--space-xl);
+		gap: var(--space-l);
 	}
 
 	@media (max-width: 768px) {
@@ -159,8 +163,9 @@ const base = import.meta.env.BASE_URL;
 	}
 
 	.styled-footer {
-		padding: var(--space-xl) 0;
-		border-top: 1px solid var(--color-gray-300);
+		padding: var(--space-2xl) 0;
+		border-top: 1px solid var(--color-tinted-cream);
+		background: linear-gradient(180deg, var(--color-light-cream) 0%, var(--color-cream) 100%);
 		z-index: -1;
 	}
 </style>

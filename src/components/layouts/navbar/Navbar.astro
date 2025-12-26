@@ -30,16 +30,23 @@ const base = import.meta.env.BASE_URL;
 	.right-hand-side {
 		display: flex;
 		align-items: center;
+		gap: var(--space-s);
 	}
 
 	.navbar {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		padding: var(--space-s) var(--space-m) var(--space-s) 1.3rem;
+		align-items: center;
+		padding: var(--space-s) var(--space-l);
+		margin: var(--space-s) auto 0;
+		max-width: 1180px;
+		border-radius: 999px;
+		border: 1px solid var(--color-tinted-cream);
+		background: color-mix(in srgb, var(--color-light-cream) 92%, var(--color-tinted-cream) 8%);
+		box-shadow: var(--box-shadow-lg);
 		animation: fadeIn 0.5s 0.2s forwards;
 		opacity: 0;
-		background: var(--color-cream);
 		position: relative;
 		z-index: 1001;
 	}
@@ -68,8 +75,9 @@ const base = import.meta.env.BASE_URL;
 
 	@media screen and (max-width: 550px) {
 		.navbar {
-			padding: var(--space-s);
+			padding: var(--space-xs) var(--space-s);
 			margin-bottom: var(--space-m);
+			border-radius: var(--border-radius-lg);
 		}
 
 		.mobile-menu-toggle {

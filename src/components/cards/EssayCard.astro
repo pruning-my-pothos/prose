@@ -40,6 +40,7 @@ const base = import.meta.env.BASE_URL;
 		width: 100%;
 		aspect-ratio: 1 / 1;
 		overflow: hidden;
+		border-radius: var(--border-radius-base);
 	}
 
 	.image-wrapper img {
@@ -59,7 +60,7 @@ const base = import.meta.env.BASE_URL;
 		font-family: var(--font-sans);
 		font-size: var(--font-size-xs);
 		text-transform: capitalize;
-		color: var(--color-gray-500);
+		color: var(--color-gray-600);
 		font-weight: 400;
 		margin-top: 6px;
 	}
@@ -80,11 +81,11 @@ const base = import.meta.env.BASE_URL;
 		display: flex;
 		flex-direction: column;
 		border: 1px solid var(--color-tinted-cream);
-		padding: var(--space-s);
+		padding: var(--space-m);
 		margin: 0 var(--space-2xs) var(--space-2xs) 0;
-		border-radius: var(--border-radius-base);
-		box-shadow: var(--box-shadow-sm);
-		background: var(--color-light-cream);
+		border-radius: var(--border-radius-lg);
+		box-shadow: var(--box-shadow-md);
+		background: linear-gradient(180deg, var(--color-light-cream) 0%, var(--color-light-salmon) 100%);
 		transition: all 0.3s ease-in-out;
 		will-change: transform, box-shadow;
 		color: var(--color-gray-800);
@@ -98,18 +99,18 @@ const base = import.meta.env.BASE_URL;
 	.essay-card h3 {
 		transition: all 0.3s ease-in-out;
 		font-family: var(--font-body);
-		font-size: var(--font-size-base);
-		font-weight: 400;
+		font-size: calc(var(--font-size-base) * 1.05);
+		font-weight: 500;
 		line-height: var(--leading-snug);
 		margin: var(--space-2xs) 0;
 	}
 
 	.essay-card:hover {
 		box-shadow: var(--box-shadow-lg);
-		transform: scale3d(1.02, 1.02, 1.02);
+		transform: translateY(-4px);
 	}
 
 	.essay-card:hover h3 {
-		color: var(--color-crimson);
+		color: var(--color-sea-blue);
 	}
 </style>

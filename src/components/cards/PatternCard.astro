@@ -33,7 +33,7 @@ const base = import.meta.env.BASE_URL;
 		font-family: var(--font-sans);
 		font-size: var(--font-size-xs);
 		text-transform: capitalize;
-		color: var(--color-gray-500);
+		color: var(--color-gray-600);
 		font-weight: 400;
 	}
 
@@ -53,10 +53,12 @@ const base = import.meta.env.BASE_URL;
 	.pattern-card {
 		display: flex;
 		flex-direction: row;
-		padding: var(--space-xs);
+		padding: var(--space-m);
 		margin: 0 var(--space-xs) 0 0;
-		border-radius: var(--border-radius-base);
-		border: 1px solid var(--color-cream);
+		border-radius: var(--border-radius-lg);
+		border: 1px solid var(--color-tinted-cream);
+		box-shadow: var(--box-shadow-md);
+		background: linear-gradient(135deg, var(--color-light-cream), var(--color-light-salmon));
 		transition: all 0.3s ease-in-out;
 		will-change: transform, background-color, box-shadow;
 		align-items: start;
@@ -67,8 +69,8 @@ const base = import.meta.env.BASE_URL;
 		color: var(--color-gray-800);
 		transition: color 0.3s ease-in-out;
 		font-family: var(--font-body);
-		font-size: var(--font-size-base);
-		font-weight: 400;
+		font-size: calc(var(--font-size-base) * 1.04);
+		font-weight: 500;
 		line-height: var(--leading-snug);
 		margin-left: 14px;
 	}
@@ -80,14 +82,14 @@ const base = import.meta.env.BASE_URL;
 	}
 
 	.pattern-card:hover {
-		transform: scale3d(1.02, 1.02, 1.02);
-		background: var(--color-light-cream);
-		box-shadow: var(--box-shadow-sm);
-		border: 1px solid var(--color-tinted-cream);
+		transform: translateY(-4px);
+		background: color-mix(in srgb, var(--color-light-salmon) 85%, white 15%);
+		box-shadow: var(--box-shadow-lg);
+		border: 1px solid var(--color-crimson-20);
 	}
 
 	.pattern-card:hover h3 {
-		color: var(--color-crimson);
+		color: var(--color-sea-blue);
 	}
 
 	.pattern-card:hover .nav-animated-icon {
