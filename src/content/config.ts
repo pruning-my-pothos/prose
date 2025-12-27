@@ -14,6 +14,7 @@ const notesCollection = defineCollection({
       type: z.literal("note"),
       topics: z.array(z.string()).optional(),
       growthStage: z.string(),
+      evidenceLevel: z.enum(["anecdotal", "argued", "cited"]).optional(),
       draft: z.boolean().optional(),
       toc: z.boolean().optional(),
       version: z.number().optional(),
@@ -33,6 +34,7 @@ const essaysCollection = defineCollection({
       cover: image(),
       topics: z.array(z.string()).optional(),
       growthStage: z.string(),
+      evidenceLevel: z.enum(["anecdotal", "argued", "cited"]).optional(),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
       toc: z.boolean().optional(),
@@ -53,6 +55,7 @@ const patternsCollection = defineCollection({
       type: z.literal("pattern"),
       topics: z.array(z.string()).optional(),
       growthStage: z.string(),
+      evidenceLevel: z.enum(["anecdotal", "argued", "cited"]).optional(),
       draft: z.boolean().optional(),
       toc: z.boolean().optional(),
       version: z.number().optional(),
@@ -71,6 +74,7 @@ const talksCollection = defineCollection({
       type: z.literal("talk"),
       topics: z.array(z.string()),
       growthStage: z.string(),
+      evidenceLevel: z.enum(["anecdotal", "argued", "cited"]).optional(),
       conferences: z.array(
         z.object({
           name: z.string(),
@@ -97,6 +101,7 @@ const podcastsCollection = defineCollection({
       topics: z.array(z.string()).optional(),
       id: z.number(),
       growthStage: z.string().default("evergreen"),
+      evidenceLevel: z.enum(["anecdotal", "argued", "cited"]).optional(),
     }),
 });
 
@@ -134,6 +139,7 @@ const nowCollection = defineCollection({
     type: z.literal("now"),
     topics: z.array(z.string()).optional(),
     growthStage: z.string().default("evergreen"),
+    evidenceLevel: z.enum(["anecdotal", "argued", "cited"]).optional(),
     draft: z.boolean().default(false),
   }),
 });

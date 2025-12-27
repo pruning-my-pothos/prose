@@ -32,6 +32,18 @@ type Props = {
 };
 
 const { frontmatter, entry } = Astro.props;
+const stageToEvidence: Record<string, "anecdotal" | "argued" | "cited"> = {
+	seedling: "anecdotal",
+	budding: "argued",
+	evergreen: "cited",
+};
+const evidenceLabels: Record<"anecdotal" | "argued" | "cited", string> = {
+	anecdotal: "Anecdotal",
+	argued: "Argued",
+	cited: "Cited",
+};
+const evidenceLevel =
+	frontmatter.evidenceLevel || stageToEvidence[frontmatter.growthStage || ""] || "anecdotal";
 
 // Get the current page's slug from the URL
 const currentSlug = Astro.url.pathname.replace(/^\/|\/$/g, "");
@@ -101,8 +113,10 @@ const coverImage =
 			<GrowthIcon
 				size="16"
 				growthStage={frontmatter.growthStage as "budding" | "evergreen" | "seedling"}
+				evidenceLevel={evidenceLevel}
+				showLabel
 			/>
-			<p>{frontmatter.growthStage}</p>
+			<p class="evidence-text">{evidenceLabels[evidenceLevel]}</p>
 			{frontmatter.draft && <span class="draft-label">Draft</span>}
 		</div>
 		<div class="title-container">
@@ -186,6 +200,11 @@ const coverImage =
 		display: block;
 		position: relative;
 		margin: auto 0;
+	}
+
+	.evidence-text {
+		margin: 0;
+		color: var(--color-gray-600);
 	}
 
 	.metadata {

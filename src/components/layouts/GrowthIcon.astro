@@ -2,19 +2,81 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-	growthStage: "seedling" | "budding" | "evergreen";
+	growthStage?: "seedling" | "budding" | "evergreen";
+	evidenceLevel?: "anecdotal" | "argued" | "cited";
 	size?: string;
+	showLabel?: boolean;
 }
 
-const { growthStage, size = "22" } = Astro.props;
+const { growthStage, evidenceLevel, size = "22", showLabel = false } = Astro.props;
+
+const stageToEvidence: Record<string, "anecdotal" | "argued" | "cited"> = {
+	seedling: "anecdotal",
+	budding: "argued",
+	evergreen: "cited",
+};
+
+const level = evidenceLevel || stageToEvidence[growthStage || ""] || "anecdotal";
+
+const iconForLevel: Record<typeof level, string> = {
+	anecdotal: "heroicons:sparkles-20-solid",
+	argued: "heroicons:adjustments-horizontal-20-solid",
+	cited: "heroicons:bookmark-square-20-solid",
+};
+
+const labelForLevel: Record<typeof level, string> = {
+	anecdotal: "Anecdotal",
+	argued: "Argued",
+	cited: "Cited",
+};
+
+const titleForLevel: Record<typeof level, string> = {
+	anecdotal: "Personal or observational; exploratory",
+	argued: "Structured reasoning with examples",
+	cited: "Includes references or source links",
+};
 ---
 
-{
-	growthStage === "seedling" ? (
-		<Icon name="seedling" width={size} height={size} style="flex-shrink: 0;" />
-	) : growthStage === "budding" ? (
-		<Icon name="budding" width={size} height={size} style="flex-shrink: 0;" />
-	) : growthStage === "evergreen" ? (
-		<Icon name="evergreen" width={size} height={size} style="flex-shrink: 0;" />
-	) : null
-}
+<span class="evidence-badge" data-level={level} title={titleForLevel[level]}>
+	<Icon
+		name={iconForLevel[level]}
+		width={size}
+		height={size}
+		class="evidence-icon"
+		style="flex-shrink: 0;"
+	/>
+	{showLabel && <span class="evidence-label">{labelForLevel[level]}</span>}
+</span>
+
+<style>
+	.evidence-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		padding: 0.1rem 0.5rem;
+		border-radius: 999px;
+		background: color-mix(in srgb, var(--color-light-salmon) 50%, white 50%);
+		border: 1px solid var(--color-tinted-cream);
+		color: var(--color-gray-800);
+		font-family: var(--font-sans);
+		font-size: var(--font-size-xs);
+		font-weight: 600;
+		letter-spacing: 0.01em;
+	}
+
+	.evidence-icon {
+		color: var(--color-sea-blue);
+	}
+
+	.evidence-badge[data-level="argued"] .evidence-icon {
+		color: var(--color-crimson);
+	}
+
+	.evidence-badge[data-level="cited"] .evidence-icon {
+		color: var(--color-purple);
+	}
+
+	.evidence-label {
+		line-height: 1;
+	}
+</style>

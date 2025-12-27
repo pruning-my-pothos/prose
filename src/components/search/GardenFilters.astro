@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import GrowthIcon from "../layouts/GrowthIcon.astro";
 
 interface Props {
 	topics: string[];
@@ -53,11 +54,11 @@ const initialTopicsCount = 6;
 			</div>
 		</div>
 		<div class="select-wrapper">
-			<select id="growth-stages-select" aria-label="Growth Stages">
-				<option value="">All Growth Stages</option>
-				<option value="seedling">Seedling</option>
-				<option value="budding">Budding</option>
-				<option value="evergreen">Evergreen</option>
+			<select id="growth-stages-select" aria-label="Evidence level">
+				<option value="">All Evidence Levels</option>
+				<option value="seedling">Anecdotal · observational</option>
+				<option value="budding">Argued · structured reasoning</option>
+				<option value="evergreen">Cited · references linked</option>
 			</select>
 			<Icon name="heroicons:chevron-down" size={16} />
 		</div>
@@ -74,6 +75,15 @@ const initialTopicsCount = 6;
 			</select>
 			<Icon name="heroicons:chevron-down" size={16} />
 		</div>
+	</div>
+</div>
+
+<div class="legend">
+	<span>Evidence levels:</span>
+	<div class="legend-badges">
+		<GrowthIcon growthStage="seedling" evidenceLevel="anecdotal" size="16" showLabel />
+		<GrowthIcon growthStage="budding" evidenceLevel="argued" size="16" showLabel />
+		<GrowthIcon growthStage="evergreen" evidenceLevel="cited" size="16" showLabel />
 	</div>
 </div>
 
@@ -249,6 +259,24 @@ const initialTopicsCount = 6;
 
 	.toggle-topics:disabled {
 		display: none;
+	}
+
+	.legend {
+		display: flex;
+		align-items: center;
+		gap: var(--space-s);
+		flex-wrap: wrap;
+		font-family: var(--font-sans);
+		font-size: var(--font-size-xs);
+		color: var(--color-gray-700);
+		margin-bottom: var(--space-m);
+	}
+
+	.legend-badges {
+		display: flex;
+		align-items: center;
+		gap: var(--space-xs);
+		flex-wrap: wrap;
 	}
 </style>
 

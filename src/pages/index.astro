@@ -16,21 +16,21 @@ import { extractBaseSlug } from "../utils/versionUtils";
 import { siteConfig } from "../utils/siteConfig";
 const base = import.meta.env.BASE_URL;
 
-const essays = await getCollection("prose", ({ data }) => data.featured === true && !data.draft);
+const essays = await getCollection("prose", ({ data }) => !data.draft);
 const notes = await getCollection("scratchpad", ({ data }) => !data.draft);
 const patterns = await getCollection("riffs", ({ data }) => !data.draft);
 const books = await getCollection("shelf");
 
 const sortedEssays = essays
-	.slice(0, 4)
-	.sort((a, b) => new Date(b.data.updated).getTime() - new Date(a.data.updated).getTime());
+	.sort((a, b) => new Date(b.data.updated).getTime() - new Date(a.data.updated).getTime())
+	.slice(0, 6);
 
 const sortedNotes = notes.sort(
 	(a, b) => new Date(b.data.updated).getTime() - new Date(a.data.updated).getTime(),
 );
 
 const sortedPatterns = patterns
-	.slice(0, 8)
+	.slice(0, 7)
 	.sort((a, b) => new Date(b.data.updated).getTime() - new Date(a.data.updated).getTime());
 ---
 
@@ -64,41 +64,49 @@ const sortedPatterns = patterns
 		<Spacer />
 
 		<section class="pothos-section">
-			<h3>Pruning My Pothos — the plant, the practice, the philosophy, the path</h3>
-			<p>
-				Most people see a pothos and think: easy, decorative, low maintenance. I see a survivor that keeps
-				growing in low light, spills from a forgotten pot, and quietly claims space. Pruning it surfaced a
-				truth: letting go is part of growth, and beauty rarely moves in straight lines.
-			</p>
-			<ul>
-				<li>✂️ Prune to grow: subtract with purpose and make room to thrive.</li>
-				<li>🌤 Low light living: you don’t need perfect conditions to make progress.</li>
-				<li>🌱 Trailing isn’t failing: growth can sprawl, meander, and still count.</li>
-			</ul>
-			<p class="quote">
-				“A pruned pothos doesn’t chase the sun; it finds peace with where it is. That’s strength.” — PoeticMayhem
-			</p>
-			<p>
-				This space is for people who are overwhelmed by noise and underwhelmed by meaning. If you’re tired of
-				chasing someone else’s idea of growth, stay. Sprawl. Prune what no longer serves you and water what does.
-			</p>
-		</section>
-
-			<section>
-				<a href={`${base}garden`}>
-					<h2 class="garden-title">Root Notes</h2>
-				</a>
-			<div class="subheader">
-				This path is a living set of scratchpad entries, prose, and riffs that sprawl and get pruned over time.{" "}
-				It orbits AI integration, techno-functional translation, and the quieter practice of growth.{" "}
-				<a href={`${base}garden-history`} class="readmore-link">
-					Learn more
-					<Icon name="heroicons:arrow-right" size={18} />
-				</a>
+			<div class="pothos-shell">
+				<div class="pothos-title">
+					<h3>Pruning My Pothos — the plant, the practice, the philosophy, the path</h3>
+					<p>
+						Most people see a pothos and think: easy, decorative, low maintenance. I see a survivor that keeps
+						growing in low light, spills from a forgotten pot, and quietly claims space. Pruning it surfaced a
+						truth: letting go is part of growth, and beauty rarely moves in straight lines.
+					</p>
+				</div>
+				<div class="pothos-body">
+					<ul>
+						<li>✂️ Prune to grow: subtract with purpose and make room to thrive.</li>
+						<li>🌤 Low light living: you don’t need perfect conditions to make progress.</li>
+						<li>🌱 Trailing isn’t failing: growth can sprawl, meander, and still count.</li>
+					</ul>
+					<p class="quote">
+						“A pruned pothos doesn’t chase the sun; it finds peace with where it is. That’s strength.”
+						— PoeticMayhem
+					</p>
+					<p>
+						This space is for people who are overwhelmed by noise and underwhelmed by meaning. If you’re tired of
+						chasing someone else’s idea of growth, stay. Sprawl. Prune what no longer serves you and water what does.
+					</p>
+				</div>
 			</div>
 		</section>
 
-		<section class="garden-section">
+		<section class="root-notes-wrapper">
+			<div class="root-notes-header">
+				<a href={`${base}garden`}>
+					<h2 class="garden-title">Root Notes</h2>
+				</a>
+				<div class="subheader">
+					This path is a living set of scratchpad entries, prose, and riffs that sprawl and get pruned over time.{" "}
+					It orbits AI integration, techno-functional translation, and the quieter practice of growth.{" "}
+					<a href={`${base}garden-history`} class="readmore-link">
+						Learn more
+						<Icon name="heroicons:arrow-right" size={18} />
+					</a>
+				</div>
+			</div>
+
+			<div class="root-notes-grid">
 			<section class="essays-section">
 				<a href={`${base}essays`} class="header-link">
 					<h3 class="section-header">
@@ -135,7 +143,7 @@ const sortedPatterns = patterns
 					Working thoughts and in-progress ideas.
 				</div>
 				{
-					sortedNotes.slice(0, 12).map((note) => (
+					sortedNotes.slice(0, 6).map((note) => (
 						<a href={`${base}${note.id}`}>
 							<div class="index-note-card">
 								{note.data.growthStage && (
@@ -186,7 +194,7 @@ const sortedPatterns = patterns
 				<div class="books-grid">
 					{
 						books
-							.slice(0, 8)
+							.slice(0, 9)
 							.map((book) => (
 								<BookCard
 									small
@@ -200,6 +208,7 @@ const sortedPatterns = patterns
 					}
 				</div>
 			</section>
+			</div>
 		</section>
 	</PageWrapper>
 </Layout>
@@ -266,22 +275,26 @@ const sortedPatterns = patterns
 		color: var(--color-sea-blue);
 	}
 
+	.root-notes-wrapper {
+		margin: var(--space-l) 0 var(--space-l);
+	}
+
 	.garden-title {
 		font-size: var(--font-size-2xl);
 		font-family: var(--font-serif);
 		color: var(--color-gray-800);
 		font-weight: 500;
 		line-height: var(--leading-snug);
-		margin: var(--space-xs) 0 var(--space-2xs);
+		margin: 0 0 var(--space-2xs);
 		transition: all 0.3s ease-in-out;
 		letter-spacing: -0.01em;
 	}
 
-	.garden-section {
-		margin: var(--space-xl) 0 var(--space-s);
+	.root-notes-grid {
+		margin-top: var(--space-s);
 		display: grid;
-		grid-gap: var(--space-2xl);
-		grid-template-columns: 1fr 1fr 1fr;
+		grid-gap: var(--space-xl);
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 		grid-template-rows: auto;
 		grid-template-areas:
 			"essays essays notes"
@@ -289,13 +302,13 @@ const sortedPatterns = patterns
 	}
 
 	@media (max-width: 768px) {
-		.garden-section {
+		.root-notes-grid {
 			grid-gap: var(--space-s);
 		}
 	}
 
 	@media (max-width: 640px) {
-		.garden-section {
+		.root-notes-grid {
 			grid-template-columns: 1fr;
 			grid-gap: var(--space-l);
 			grid-template-rows: auto;
@@ -381,46 +394,61 @@ const sortedPatterns = patterns
 	}
 
 	.pothos-section {
-		margin: var(--space-l) 0;
-		border: 1px solid var(--color-tinted-cream);
-		border-radius: var(--border-radius-lg);
-		padding: var(--space-xl);
-		background: linear-gradient(175deg, var(--color-light-cream), color-mix(in srgb, var(--color-light-salmon) 75%, white 25%));
-		box-shadow: var(--box-shadow-lg);
+		margin: var(--space-l) 0 var(--space-xl);
+		padding: 0;
 	}
 
-	.pothos-section h3 {
-		margin: 0 0 var(--space-2xs);
+	.pothos-shell {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		gap: var(--space-l);
+		padding: var(--space-xl) 0;
+		align-items: start;
+		border-top: 1px solid var(--color-tinted-cream);
+		border-bottom: 1px solid var(--color-tinted-cream);
+	}
+
+	.pothos-title h3 {
+		margin: 0 0 var(--space-xs);
 		font-family: var(--font-serif);
 		font-size: var(--font-size-xl);
 		color: var(--color-gray-800);
+		letter-spacing: -0.01em;
 	}
 
-	.pothos-section p {
+	.pothos-title p {
 		font-family: var(--font-sans);
 		color: var(--color-gray-800);
 		font-size: var(--font-size-base);
 		line-height: var(--leading-base);
+		margin: 0;
 	}
 
-	.pothos-section ul {
+	.pothos-body ul {
 		list-style: none;
 		padding: 0;
-		margin: var(--space-xs) 0;
+		margin: 0 0 var(--space-s);
 		display: grid;
 		gap: var(--space-3xs);
 	}
 
-	.pothos-section li {
+	.pothos-body li {
 		font-family: var(--font-sans);
 		font-size: var(--font-size-base);
 		color: var(--color-gray-800);
 	}
 
-	.quote {
+	.pothos-body .quote {
 		font-style: italic;
 		color: var(--color-gray-600);
-		margin-top: var(--space-xs);
+		margin: 0 0 var(--space-xs);
+	}
+
+	@media (max-width: 640px) {
+		.pothos-shell {
+			padding: var(--space-l) 0;
+			gap: var(--space-m);
+		}
 	}
 
 	.main-title {
@@ -442,11 +470,14 @@ const sortedPatterns = patterns
 	}
 
 	.patterns-grid {
-		margin-left: -1.4rem;
 	}
 
 	.library-section {
 		grid-area: library;
+		background: transparent;
+		border: none;
+		border-radius: 0;
+		padding: var(--space-s) 0 0;
 	}
 
 	.essays-grid,
@@ -461,5 +492,24 @@ const sortedPatterns = patterns
 		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 		grid-gap: var(--space-2xs);
 		margin: 0;
+	}
+
+	:global(.books-grid .book-card) {
+		background: transparent;
+		border: none;
+		box-shadow: none;
+		border-radius: 0;
+		padding: 0;
+		margin: 0 0 var(--space-m);
+	}
+
+	:global(.books-grid .book-card[data-small="true"]) {
+		padding: 0 0 var(--space-s) 0;
+	}
+
+	:global(.books-grid .book-card:hover) {
+		transform: none;
+		box-shadow: none;
+		border: none;
 	}
 </style>
